@@ -1,0 +1,619 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR",
+    "name": "CA Core Actions with Blocks",
+    "title": "CA Core Actions with Blocks",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Local Loop Limit 55",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01I2MJQPV8S2K5dWXzvlQEg1JdURnSw8Zcx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Execution Time",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01N4N9D3LFDTY5NxYah8vrqWLD9f3wUU0nd",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Pass Value",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01O4MJN0LOEFI6uS9mwUBtGolQb92H8XmLk",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA Core Actions with Blocks",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01I2MJRRQJOH5008rKRSbFJpH101aa5s53i",
+        "name": "While Loop",
+        "title": "While Loop 20 Times",
+        "type": "logic.while",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "While Loop 20 Times",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01I2MJS4EZ91M0J96O6SQltMPUojzoWiGWP",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.local.variable_workflow_01I2MJQPV8S2K5dWXzvlQEg1JdURnSw8Zcx$",
+                "operator": "lte",
+                "right_operand": 19
+              },
+              "continue_on_failure": true,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01I2MJSGF0FUV32FhuA6PD5zsXsMS91ziz8",
+                "name": "XSL Transform",
+                "title": "XSL Transform",
+                "type": "core.xsl_transform",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "XSL Transform",
+                  "document": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<breakfast_menu>\n  <food>\n    <name>Belgian Waffles</name>\n    <price>$5.95</price>\n    <description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>\n    <calories>650</calories>\n  </food>\n  <food>\n    <name>Strawberry Belgian Waffles</name>\n    <price>$7.95</price>\n    <description>Light Belgian waffles covered with strawberries and whipped cream</description>\n    <calories>900</calories>\n  </food>\n  <food>\n    <name>Berry-Berry Belgian Waffles</name>\n    <price>$8.95</price>\n    <description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>\n    <calories>900</calories>\n  </food>\n  <food>\n    <name>French Toast</name>\n    <price>$4.50</price>\n    <description>Thick slices made from our homemade sourdough bread</description>\n    <calories>600</calories>\n  </food>\n  <food>\n    <name>Homestyle Breakfast</name>\n    <price>$6.95</price>\n    <description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>\n    <calories>950</calories>\n  </food>\n</breakfast_menu>",
+                  "skip_execution": false,
+                  "stylesheet": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xsl:version=\"1.0\" \n  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <body style=\"font-family:Arial;font-size:12pt;background-color:#EEEEEE\">\n    <xsl:for-each select=\"breakfast_menu/food\">\n      <div style=\"background-color:teal;color:white;padding:4px\">\n        <span style=\"font-weight:bold\">\n          <xsl:value-of select=\"name\"/> - \n        </span>\n        <xsl:value-of select=\"price\"/>\n      </div>\n      <div style=\"margin-left:20px;margin-bottom:1em;font-size:10pt\">\n        <p>\n          <xsl:value-of select=\"description\"/>\n          <span style=\"font-style:italic\"> (\n            <xsl:value-of select=\"calories\"/> calories per serving)\n          </span>\n        </p>\n      </div>\n    </xsl:for-each>\n  </body>\n</html>"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJSSVNB946DGU9DCEOaKz47ODgHSxXY",
+                "name": "Convert Json to Xml",
+                "title": "Convert Json to Xml",
+                "type": "core.json2xml",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Convert Json to Xml",
+                  "input_json": "{\n  \"id\": \"01ET3SDLZ352231pFTOsmSrYVZgt3q3NEI4\",\n  \"schema_id\": \"01ENKIH64V23J6IUXXO9xGtKI3vfzhwxirI\",\n  \"name\": \"Core 4/1\",\n  \"title\": \"Core 4/1\",\n  \"type\": \"generic.workflow\",\n  \"base_type\": \"workflow\",\n  \"variables\": null,\n  \"dynamic_map\": {\n    \"column_map\": null,\n    \"action_variable_map\": {\n      \"01ET3SK4MEUZJ05f9fOzvsg6gsb45dcSGQY\": {\n        \"jsonpath_queries\": {\n          \"type\": \"object\",\n          \"output_variable\": {\n            \"name\": {\n              \"name\": \"name\",\n              \"type\": \"string\"\n            }\n          }\n        }\n      },\n      \"01ET3SRZWEGFP5hqwfHlMHWjlH1xCovDpWb\": {\n        \"xpath_queries\": {\n          \"type\": \"object\",\n          \"output_variable\": {\n            \"book\": {\n              \"name\": \"book\",\n              \"type\": \"string\"\n            }\n          }\n        }\n      }\n    },\n    \"action_output_table\": null\n  },\n  \"properties\": {\n    \"atomic\": {\n      \"is_atomic\": false\n    },\n    \"delete_workflow_instance\": false,\n    \"display_name\": \"Core 4/1\",\n    \"runtime_user\": {\n      \"override_target_runtime_user\": false,\n      \"specify_on_workflow_start\": false,\n      \"target_default\": true\n    },\n    \"target\": {\n      \"execute_on_target_group\": false,\n      \"execute_on_workflow_target\": false,\n      \"no_target\": true,\n      \"specify_on_workflow_start\": false\n    }\n  },\n  \"actions\": [\n    {\n      \"id\": \"01ET3SSTKYAS00sCjv3NqPKkDQo1wYmp8R2\",\n      \"name\": \"XSL Transform\",\n      \"title\": \"XSL Transform\",\n      \"type\": \"core.xsl_transform\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SII04YCF3LW7pbfuoJIHUSKVidM6Nu\",\n      \"name\": \"Find String\",\n      \"title\": \"Find String\",\n      \"type\": \"core.find_string\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SU1V8ZVB7lJVXFZhQNCFuq0vJi6RwK\",\n      \"name\": \"XSL Transform\",\n      \"title\": \"XSL Transform\",\n      \"type\": \"core.xsl_transform\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"created\"\n      }\n    },\n    {\n      \"id\": \"01ET3SRZWEGFP5hqwfHlMHWjlH1xCovDpWb\",\n      \"name\": \"XPath Query\",\n      \"title\": \"XPath Query\",\n      \"type\": \"core.xpathquery\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SR5HTHRX5NXKgu3RRh07aM38qfOckd\",\n      \"name\": \"Trim String\",\n      \"title\": \"Trim String\",\n      \"type\": \"core.trim_string\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SPLYBH326aTf4Ab6E1ztdFz3eKNkK2\",\n      \"name\": \"To Lower\",\n      \"title\": \"To Lower\",\n      \"type\": \"core.string2lower\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SORPNWOY4OLQhwZLZaLtuj0NMxpYVK\",\n      \"name\": \"Substring\",\n      \"title\": \"Substring\",\n      \"type\": \"core.substring\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SNZD0LSL4wXgwimeUo2PN5qfSsvLme\",\n      \"name\": \"Split String\",\n      \"title\": \"Split String\",\n      \"type\": \"core.splitstring\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SN8NOAEG3m4rqNl5zDaK65h7kf9Up7\",\n      \"name\": \"Sleep\",\n      \"title\": \"Sleep\",\n      \"type\": \"core.sleep\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SMH6WKZY3Vxz5jMyhh7ibNlaFDqdVC\",\n      \"name\": \"Replace String\",\n      \"title\": \"Replace String\",\n      \"type\": \"core.replacestring\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SLO08QSP5Bhc4dortDZd6aUZWukSqq\",\n      \"name\": \"Parse Date\",\n      \"title\": \"Parse Date\",\n      \"type\": \"core.parse_date\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SKWCMHMN7YhV1nZouPp0anV2KX6GEv\",\n      \"name\": \"Match Regular Expression\",\n      \"title\": \"Match Regular Expression\",\n      \"type\": \"core.matchregex\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SK4MEUZJ05f9fOzvsg6gsb45dcSGQY\",\n      \"name\": \"JSONPath Query\",\n      \"title\": \"JSONPath Query\",\n      \"type\": \"corejava.jsonpathquery\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SJASYHFT0eqmhCvmMZLPe1I02VGB9s\",\n      \"name\": \"Format Date\",\n      \"title\": \"Format Date\",\n      \"type\": \"core.format_date\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SHPLER8G4VJ6MIPc9meYq1ihv0J3Xw\",\n      \"name\": \"Escape Regex Metacharacters\",\n      \"title\": \"Escape Regex Metacharacters\",\n      \"type\": \"core.escape_regex\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SGSQ4MZ15gWxJkzGUG3CV7kSHEbIqK\",\n      \"name\": \"Convert Xml to Json\",\n      \"title\": \"Convert Xml to Json\",\n      \"type\": \"core.xml2json\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SFWJSQPN7RVjS1jKHlMdtxDcep039f\",\n      \"name\": \"Convert Json to Xml\",\n      \"title\": \"Convert Json to Xml\",\n      \"type\": \"core.json2xml\",\n      \"base_type\": \"activity\",\n      \"valid\": false,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SEZCK5PF6ItI1gaisfWc1ykrnN59u9\",\n      \"name\": \"Calculate Date Time Difference\",\n      \"title\": \"Calculate Date Time Difference\",\n      \"type\": \"core.calculate_date_time_difference\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01ET3SE3WYU9R50uGzLljPxN1oZZNuGIb2q\",\n      \"name\": \"Calculate Date\",\n      \"title\": \"Calculate Date\",\n      \"type\": \"core.calculate_date\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    }\n  ],\n  \"invalid_properties\": null,\n  \"valid\": true,\n  \"workflow_valid\": false,\n  \"created_on\": \"2020-04-01T17:57:27Z\",\n  \"created_by\": \"1555\",\n  \"updated_on\": \"2020-04-09T17:54:08Z\",\n  \"updated_by\": \"1555\",\n  \"started_on\": \"2020-04-01T17:58:08Z\",\n  \"owner\": \"1555\",\n  \"categories\": [\n    \"01ENKIVG8TRYQ1ohQkoPczHHxi3EABseM6V\"\n  ],\n  \"status\": {\n    \"state\": \"invalid\"\n  },\n  \"unique_name\": \"definition_workflow_01ET3SDN67TE77mPPIVvt1CCGrA60HKqW6Y\",\n  \"permissions\": [\n    \"manage\",\n    \"run\"\n  ]\n}",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJT7DRD5A2YnxwkUM0gYAizMQm0eiRU",
+                "name": "To Upper",
+                "title": "To Upper",
+                "type": "core.string2upper",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "To Upper",
+                  "skip_execution": false,
+                  "source": "Action Orchestrator\n\nWorkflow\nUse Action Orchestrator to automate an IT es by defining a workflow, then running instances of the defined workflow. \nThe workflow defines the automation steps (activities), the logic or flow between these steps, and how to flow data from one step to the next.\nThe engine manages the state and lifecycle of a workflow, bringing it into existence, running its steps, and finally terminating it. During and (by default) after workflow execution, the engine retains information so that operators can view the status of their running workflows.\n\nRelated Topics\nCreating a Basic Workflow\n\nCategory\nAction Orchestrator workflows, tasks and several other elements of the functional model can be placed into categories. Categories in Action Orchestrator work just like Microsoft Outlook categories with respect to tagging objects for grouping in the UI. Objects such as workflows can be in multiple categories. For example, a workflow can be both a network best practice and a security best practice.\nThe Categories feature provides a way to organize your workflows based on your organizational or functional requirements. Action Orchestrator ships with predefined categories but provides the functionality for you to create your own business-specific categories. When creating a workflow, you can assign the workflow to a category. You can also add other categories to a category to create a hierarchy.\n\nActivities\nActivities are the steps in a workflow. They are customized to perform integration with some environment. Activities can be provided by adapters (binary components in Action Orchestrator) or by automation packs. Therefore both adapters and automation packs can contribute to a particular integration. Workflow activities provide the logic or flow aspects of the workflow. Workflow activities are exposed in the Logic tab of the workflow Editor.\n\nRelated Topic\nAdding Logic Components to a Workflow\n\nConditions\nMany workflow logic elements perform tests to control execution. Conditions implement these tests. For example, a Condition Branch can split execution to take one path if a condition exists, and another if it does not. A While Block can iterate execution while a condition exists.\nConditions can also be placed on a workflow trigger, allowing control of situations in which the workflow can run. For example, a scenario might require the workflow to run during two different time ranges, which would require two triggers: one trigger with an 8am-5pm condition and a totally different trigger with a 5pm-8am condition.\nThere are two basic types of conditions:\n\nComposite conditions\nA composite condition builds a compound condition from individual conditions. It allows combining conditions with AND logic, where all of the conditions must be TRUE for the composite condition to be TRUE, or OR logic, where any of the conditions can be TRUE for the composite condition to return TRUE.\nCompound conditions can be used in other compound conditions to produce complex logic, such as ((X AND Y) OR (A AND B)).\n\nAccount Keys\nA account key record stores information about the user security context and passes this information to the adapters for activity execution, event monitoring, and some target operations (such as availability monitoring and discovery). Account Key instances can be shared across targets and workflows. For example, if a single set of credentials can be used to access a set of network devices, only one account key instance must be created. When it is time to change the credentials, users can go to the account keys list and edit the single instance to change the credentials. This greatly reduces the configuration load when credentials tend to change often in some environments.\n\nAccount Key credentials can be used in a workflow, but no workflow can retrieve credentials. If your workflow must access credentials, use hidden string variables.\n\n\nThe account key user concept allows the product to implement delegation. For example:\n\nAn IT help desk operator comes to Action Orchestrator to run a workflow.\n\nThis operator is presented with a list of workflows that Action Orchestrator role-based access control allows them to run. These workflows might include activities that require a level of security permission that the operator does not natively have.\n\nThe operator can perform actions as a part of the established workflow that are not possible for them to perform manually.\n\nThis concept can also be leveraged to reveal where operators make changes outside of a workflow. By examining auditing logs such as Windows logs for things being done under the operator's credentials rather than the Action Orchestrator  account key user credentials, it is possible to determine how the operator is doing things outside of workflow and determine how to close things down. So a side effect of Action Orchestrator automation is that customers might be able to tighten security in their environment.\n\nTargets\nTargets are instances created from a target type. For example:\n\nA terminal target allows SSH or telnet to some specific network device.\n\nA database target allows connection to specific supported databases.\n\nA workflow or activity executes an action within some environment. The specifics of the definition of the connection to the environment are encompassed in the target. For example, a target for:\n\nAn SSH command might be a specific UNIX system or network device.\n\nA database query might be a specific database.\n\nWorkflows can restrict the type of target which they can accept. For example, it is not appropriate to run a workflow to change a network device's configuration against a Windows computer.\nA workflow acts on a target. This allows the workflow to perform actions against an external tool or environment. Although a default target instance can be specified directly by a workflow, more commonly it is associated to the workflow at run time.\nActivities, which are the steps in a workflow (see Activities), can also specify a target. Typically, activities default to use the workflow target, but a step in a workflow might need to happen against a different system than the workflow target. For example, a workflow overall might deal with a network device, but a step in the workflow might need to update a database. Often workflows can determine the target on which an activity may act by using a relationship to the target for the workflow, or doing a query on some data such as a name to find a matching target instance.\n\nRelated Topics\nConfiguring Targets\n\nAdding Triggers\n\nTarget Groups\nTarget groups are collections of targets. Often automation might need to run against all machines in a collection, or against one of the machines in a collection. Target groups provide this functionality. \nAdapters can provide target groups to leverage grouping definitions where they exist. For example:\n\nActive Directory OU: Customers are frustrated when they must recode their grouping information into yet another product. The Active Directory adapter seeks grouping information where it is defined. For example, an Active Directory target group looks up computers in some organizational unit (OU) in the directory.\n\nTarget Type group: Using queries of their attributes, the Action Orchestrator provides type-based groupings of targets. For example, use a target group to group all targets of a given type, or to perform additional filtering to pattern match against a field in the target definition.\n\nVirtual group: A target group can be a virtual group. Use a virtual group to specify an explicit list of targets, providing the capability to manually select targets and establish group membership. A virtual group can also allow the inclusion of other target groups so that group membership can be defined hierarchically. For example, a virtual group called \"Production switches\" might include all members of the \"Houston data center switches\" group as well as all members of the \"London data center switches\" group, but not members of the \"Engineering lab switches.\"\n\nA default target for a workflow can specify a target group along with a target selection algorithm:\n\nTypically, a target selection algorithm chooses one or more members of a target group to specify the target instances on which the workflow will act.\n\nAt execution time the target selection algorithm resolves the then-present members of the target group and selects a target.\n\nWhen a user or API call interactively runs a workflow ad-hoc (on demand), the user can accept the default target specified in the workflow or override it with a specific target.\n\nWhere a target selection algorithm resolves to multiple target instances, the engine spins up separate workflow instances for each target. Thus at execution time, a workflow instance has a specific target on which it will act, against which the workflow encodes actions.\n\nRelated Topics\nConfiguring Targets\n\nTarget Types\nTarget types provide a way to define a service or other IT element that is not represented by any target type provided by an adapter. A target type can:\n\nExtend an existing adapter-provided target type\n\nExtend another target type\n\nDefine a completely new target type\n\nAll new targets are created based upon a target type. Some target types are 'abstract', meaning they cannot be directly instantiated into targets but are only available for inheritance by other target types. In Action Orchestrator, these target types are marked as either 'creatable' or 'not creatable'.\nA target type:\n\nExposes (and inherits from its ancestor target types) properties and inter-target named relationships that can be read and set either manually or by an Update Target activity.\n\nDefines property default values.\n\nTriggers\nWorkflow instances can come into existence in the following ways:\n\nA workflow can be invoked manually.\n\nA workflow can be invoked by another workflow.\n\nA trigger can fire, which initiates the workflow.\n\nA workflow can be invoked using the API call. \n\nTriggers are events and conditions in the system that determine how or when the workflow will be executed. Multiple triggers can be added that can be initiated when certain conditions are met.\n\nAction Orchestrator supports two types of rule-based triggers: events and schedules.\n\nEvents\nThe Action Orchestrator can monitor for events from the environment, and you can specify triggers that initiate workflows when the subscribed event occurs. For example, an event might be an incoming stop trap or a fault on a UCS system.\n\nWorkflow Events\nWorkflow events allow one workflow to pass an event to other workflows. For example:\n\nA Raise workflow Event activity can post a workflow event, and a trigger can monitor for a specific event.\n\nA Correlate workflow events activity allows monitoring for an event within a workflow.\n\nWorkflow events include elements of the Action Orchestrator functional model so that they are aware of internal schema elements. For example, you can include a target type in your subscription criteria.\nWorkflow events are exposed in the web service, so an external system can programmatically submit an event to Action Orchestrator. However, the use cases for workflow events generally center more around Action Orchestrator-internal use cases; Advanced Message Queuing Protocol (AMQP) is preferred for external message passing.\nFor internal use cases, Workflow events have the advantage because they are native and lightweight within Action Orchestrator. It is easy to create message driven architectures within Action Orchestrator using workflow events. Since these events are not persisted to the database, they are very lightweight. Workflow events have the advantage that they do not require external setup and installation, as would be the case with AMQP.\n\nSchedules\nSchedules allow triggering workflows at some time by leveraging another object called a calendar. Calendars define which days something can occur. Calendars can be selected days or sequences of dates such as weekly or monthly, they can represent dates like fiscal quarter end, or they can be combined hierarchically. Schedules then associate a time with a calendar. When the day is in the calendar, the time is evaluated. Times can be explicit or repeating (for example, hourly).\n\nCalendars\nCalendars are reusable for schedules within many workflows. For example, you can define a calendar for Saturdays. When defining a workflow that you want to run on Saturdays, you reference the Saturday calendar. Other examples include a calendar that includes weekends and company holidays when IT might perform scheduled maintenance, or the last week of a fiscal quarter when IT might exclude non-essential automation or deny change requests.\nThe calendars feature defines the calendar to be associated with a schedule, time, or condition. This feature simplifies:\n\nReusing calendar definitions across workflows.\n\nBuilding complex calendars from other calendars.\n\nViewing the workflows that run based on a specific calendar.\n\nVariables\nThe variables feature provides a storage area for information that is used on a regular basis to avoid having to specify the same information in several places. Data stored in a variable can be altered to affect workflow execution behavior.\n\nActivity Configuration\nOne of the most common uses of variables is to define activity configuration. Any field in an activity can refer to a variable value rather than an explicit value. For example, you can use a variable to:\n\nSpecify the target as the machine where an event occurred.\n\nSpecify the start date of the workflow' operations window as a parameter to an operating system command.\n\nSpecify a condition, such as a file that should not exist after a job is initially triggered by the arrival of that file where a prior activity should have deleted the file.\n\nWorkflow Control Components\nWorkflows can use variables to define the control components. For example, you can use a variable to define:\n\nA Conditional activity to look at the exit code of a prior activity.\n\nA While Loop activity to loop until a query fails or loop for a number of times corresponding to a number of objects pulled from a query.\n\nWorkflow Parameters\nVariables can be parameterized so that a workflow definition can be vague enough to be reused in multiple places and the specifics can remain undefined so that they can be defined by the person or workflow that invokes the workflow or activity.\nFor example, a workflow called notify server owner might use a variable server for the name of the server that has a problem. The workflow retrieves the email address of the owner of the server and sends an email.\nThis workflow might be called from multiple places; a step in a server maintenance job fails, so the maintenance job populates the Server variable and invokes the notify server owner workflow. Another workflow might notify the server owner when a backup completes.\n\nFormulas as Variable Values\nYou can specify a formula anywhere a variable value is used. For example, an operating system command's parameter might be formed from concatenating two variables' values or from parsing the output of a prior command.\n\nVariable Types\nVariable type provide a way to define a new user defined variable type that is not represented by any default variable type. All new variable types are created based on system built–in type variable such as boolean, secure string, and so forth., but creating from these system built–in types are not supported.\nYou can add properties to the new variable type such as Boolean, Encrypted string, Identity, Number, String, and Table or you can add reference to either target or another variable."
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJTMMKOI94XqlgTWfVjaGeGiwGYLwY2",
+                "name": "To Lower",
+                "title": "To Lower",
+                "type": "core.string2lower",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "To Lower",
+                  "skip_execution": false,
+                  "source": "$activity.definition_activity_01I2MJT7DRD5A2YnxwkUM0gYAizMQm0eiRU.output.uppercase_text$"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJU0JVYP85Z5kyCa64ydLnepTAvCLtg",
+                "name": "XSL Transform",
+                "title": "XSL Transform",
+                "type": "core.xsl_transform",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "XSL Transform",
+                  "document": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<breakfast_menu>\n  <food>\n    <name>Belgian Waffles</name>\n    <price>$5.95</price>\n    <description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>\n    <calories>650</calories>\n  </food>\n  <food>\n    <name>Strawberry Belgian Waffles</name>\n    <price>$7.95</price>\n    <description>Light Belgian waffles covered with strawberries and whipped cream</description>\n    <calories>900</calories>\n  </food>\n  <food>\n    <name>Berry-Berry Belgian Waffles</name>\n    <price>$8.95</price>\n    <description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>\n    <calories>900</calories>\n  </food>\n  <food>\n    <name>French Toast</name>\n    <price>$4.50</price>\n    <description>Thick slices made from our homemade sourdough bread</description>\n    <calories>600</calories>\n  </food>\n  <food>\n    <name>Homestyle Breakfast</name>\n    <price>$6.95</price>\n    <description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>\n    <calories>950</calories>\n  </food>\n</breakfast_menu>",
+                  "skip_execution": false,
+                  "stylesheet": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xsl:version=\"1.0\" \n  xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <body style=\"font-family:Arial;font-size:12pt;background-color:#EEEEEE\">\n    <xsl:for-each select=\"breakfast_menu/food\">\n      <div style=\"background-color:teal;color:white;padding:4px\">\n        <span style=\"font-weight:bold\">\n          <xsl:value-of select=\"name\"/> - \n        </span>\n        <xsl:value-of select=\"price\"/>\n      </div>\n      <div style=\"margin-left:20px;margin-bottom:1em;font-size:10pt\">\n        <p>\n          <xsl:value-of select=\"description\"/>\n          <span style=\"font-style:italic\"> (\n            <xsl:value-of select=\"calories\"/> calories per serving)\n          </span>\n        </p>\n      </div>\n    </xsl:for-each>\n  </body>\n</html>"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJUDCXR9O4Z7a2Yk6Xf6IxNIRSjq9EY",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.local.variable_workflow_01I2MJQPV8S2K5dWXzvlQEg1JdURnSw8Zcx$",
+                      "variable_value_new": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.local.variable_workflow_01I2MJQPV8S2K5dWXzvlQEg1JdURnSw8Zcx$+1"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01I2MJUSYJPAB4hg8pF5RXG3rQBrAZrPpLK",
+        "name": "Split String",
+        "title": "Split String",
+        "type": "core.splitstring",
+        "base_type": "activity",
+        "properties": {
+          "boundaries": [
+            {
+              "boundary": ","
+            },
+            {
+              "boundary": "."
+            }
+          ],
+          "continue_on_failure": false,
+          "display_name": "Split String",
+          "input_string": "a,b,c,d,e,f,g.h,i,j",
+          "remove_empty": true,
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01I2MJV5U3I4R5i72DTTJfEeBCWii7V9cPX",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "For Each",
+          "skip_execution": false,
+          "source_array": "$activity.definition_activity_01I2MJUSYJPAB4hg8pF5RXG3rQBrAZrPpLK.output.parts$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01I2MJVOUL74B5eSvJjsT1gZxwwHBWuk8hW",
+            "name": "Convert Xml to Json",
+            "title": "Convert Xml to Json",
+            "type": "core.xml2json",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Convert Xml to Json",
+              "input_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<root>\n\t<workflow>\n\t\t<unique_name>definition_workflow_01EY8SN6Q86TB5tJxcI7TBle86qsd8eLx2Q</unique_name>\n\t\t<name>Workflow With Schedule:2020-04-07T18:56:12.388389538Z</name>\n\t\t<title>Workflow With Schedule: 2020-04-07T18:56:12.388389538Z</title>\n\t\t<type>generic.workflow</type>\n\t\t<base_type>workflow</base_type>\n\t\t<variables />\n\t\t<properties>\n\t\t\t<atomic>\n\t\t\t\t<is_atomic>false</is_atomic>\n\t\t\t</atomic>\n\t\t\t<delete_workflow_instance>false</delete_workflow_instance>\n\t\t\t<display_name>Workflow With Schedule: 2020-04-07T18:56:12.388389538Z</display_name>\n\t\t\t<runtime_user>\n\t\t\t\t<override_target_runtime_user>false</override_target_runtime_user>\n\t\t\t\t<specify_on_workflow_start>false</specify_on_workflow_start>\n\t\t\t\t<target_default>true</target_default>\n\t\t\t</runtime_user>\n\t\t\t<target>\n\t\t\t\t<execute_on_target_group>false</execute_on_target_group>\n\t\t\t\t<execute_on_workflow_target>false</execute_on_workflow_target>\n\t\t\t\t<no_target>true</no_target>\n\t\t\t\t<specify_on_workflow_start>false</specify_on_workflow_start>\n\t\t\t</target>\n\t\t</properties>\n\t\t<object_type>definition_workflow</object_type>\n\t\t<actions>\n\t\t\t<unique_name>Test</unique_name>\n\t\t\t<name>To Upper</name>\n\t\t\t<title>To Upper</title>\n\t\t\t<type>core.string2upper</type>\n\t\t\t<base_type>activity</base_type>\n\t\t\t<properties>\n\t\t\t\t<continue_on_failure>false</continue_on_failure>\n\t\t\t\t<display_name>To Upper</display_name>\n\t\t\t\t<skip_execution>false</skip_execution>\n\t\t\t\t<source>categories</source>\n\t\t\t</properties>\n\t\t\t<object_type>definition_activity</object_type>\n\t\t</actions>\n\t\t<actions>\n\t\t\t<unique_name>definition_activity_01EY9C5CTZ8EY6ImXAmLkA1fWdMprsdkxnI</unique_name>\n\t\t\t<name>Sleep</name>\n\t\t\t<title>Sleep</title>\n\t\t\t<type>core.sleep</type>\n\t\t\t<base_type>activity</base_type>\n\t\t\t<properties>\n\t\t\t\t<continue_on_failure>false</continue_on_failure>\n\t\t\t\t<display_name>Sleep</display_name>\n\t\t\t\t<skip_execution>false</skip_execution>\n\t\t\t\t<sleep_interval>5</sleep_interval>\n\t\t\t</properties>\n\t\t\t<object_type>definition_activity</object_type>\n\t\t</actions>\n\t\t<actions>\n\t\t\t<unique_name>Test1</unique_name>\n\t\t\t<name>To Lower</name>\n\t\t\t<title>To Lower</title>\n\t\t\t<type>core.string2lower</type>\n\t\t\t<base_type>activity</base_type>\n\t\t\t<properties>\n\t\t\t\t<continue_on_failure>false</continue_on_failure>\n\t\t\t\t<display_name>To Lower</display_name>\n\t\t\t\t<skip_execution>false</skip_execution>\n\t\t\t\t<source>Test</source>\n\t\t\t</properties>\n\t\t\t<object_type>definition_activity</object_type>\n\t\t</actions>\n\t\t<actions>\n\t\t\t<unique_name>definition_activity_01EY9E8F6BZYM0hmifU21NCZXPEFP9GAWHD</unique_name>\n\t\t\t<name>Generic CCS API Request</name>\n\t\t\t<title>Generic CCS API Request</title>\n\t\t\t<type>ccs.api_request</type>\n\t\t\t<base_type>activity</base_type>\n\t\t\t<properties>\n\t\t\t\t<action_timeout>180</action_timeout>\n\t\t\t\t<api_call_method>GET</api_call_method>\n\t\t\t\t<continue_on_failure>false</continue_on_failure>\n\t\t\t\t<display_name>Generic CCS API Request</display_name>\n\t\t\t\t<relative_url>be-console/api/v1/Test1</relative_url>\n\t\t\t\t<runtime_user>\n\t\t\t\t\t<override_target_runtime_user>false</override_target_runtime_user>\n\t\t\t\t\t<target_default>true</target_default>\n\t\t\t\t</runtime_user>\n\t\t\t\t<skip_execution>false</skip_execution>\n\t\t\t\t<target>\n\t\t\t\t\t<override_workflow_target>true</override_workflow_target>\n\t\t\t\t\t<target_id>definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q</target_id>\n\t\t\t\t</target>\n\t\t\t</properties>\n\t\t\t<object_type>definition_activity</object_type>\n\t\t</actions>\n\t\t<categories>category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf</categories>\n\t</workflow>\n\t<triggers>\n\t\t<triggerschedule_01EY8SNP49MYI0OrQ2l4Rmit9OlRoanQDUX>\n\t\t\t<workflow_id>definition_workflow_01EY8SN6Q86TB5tJxcI7TBle86qsd8eLx2Q</workflow_id>\n\t\t\t<name>schedule test</name>\n\t\t\t<title></title>\n\t\t\t<lowercase_name>schedule.schedule_test</lowercase_name>\n\t\t\t<type>schedule</type>\n\t\t\t<base_type>trigger</base_type>\n\t\t\t<ref_id>schedule_01EY8SMYRT3QR5YLStcPfbfpaVDTDMgODw5</ref_id>\n\t\t\t<version>1.0.0</version>\n\t\t\t<disabled>false</disabled>\n\t\t\t<unique_name>triggerschedule_01EY8SNP49MYI0OrQ2l4Rmit9OlRoanQDUX</unique_name>\n\t\t\t<object_type>triggerschedule</object_type>\n\t\t</triggerschedule_01EY8SNP49MYI0OrQ2l4Rmit9OlRoanQDUX>\n\t</triggers>\n\t<schedules>\n\t\t<schedule_01EY8SMYRT3QR5YLStcPfbfpaVDTDMgODw5>\n\t\t\t<unique_name>schedule_01EY8SMYRT3QR5YLStcPfbfpaVDTDMgODw5</unique_name>\n\t\t\t<name>Schedule 2020-04-07T18:56:12.388389538Z</name>\n\t\t\t<type>basic.schedule</type>\n\t\t\t<base_type>schedule</base_type>\n\t\t\t<properties>\n\t\t\t\t<calendar>calendar_recurring_01EY8SMOBR1750xPnHwY5KH69XVI3IxnU8b</calendar>\n\t\t\t\t<timezone>America/Chicago</timezone>\n\t\t\t\t<starttime>13:56</starttime>\n\t\t\t\t<interval_hours>0</interval_hours>\n\t\t\t\t<interval_minutes>0</interval_minutes>\n\t\t\t\t<number_of_times>1</number_of_times>\n\t\t\t\t<display_name>Schedule 2020-04-07T18:56:12.388389538Z</display_name>\n\t\t\t\t<description></description>\n\t\t\t</properties>\n\t\t\t<version>1.0.0</version>\n\t\t\t<object_type>schedule</object_type>\n\t\t</schedule_01EY8SMYRT3QR5YLStcPfbfpaVDTDMgODw5>\n\t</schedules>\n\t<calendars>\n\t\t<calendar_recurring_01EY8SMOBR1750xPnHwY5KH69XVI3IxnU8b>\n\t\t\t<unique_name>calendar_recurring_01EY8SMOBR1750xPnHwY5KH69XVI3IxnU8b</unique_name>\n\t\t\t<name>Calendar 2020-04-07T18:56:12.388389538Z</name>\n\t\t\t<title>Calendar 2020-04-07T18:56:12.388389538Z</title>\n\t\t\t<schema_id>0191KHYW58KGL2bngqv9EgwnGu1wTrxR2tF</schema_id>\n\t\t\t<base_type>calendar</base_type>\n\t\t\t<type>calendar.recurring</type>\n\t\t\t<properties>\n\t\t\t\t<date_range>\n\t\t\t\t\t<end_date>2022-05-18</end_date>\n\t\t\t\t\t<start_date>2020-02-11</start_date>\n\t\t\t\t</date_range>\n\t\t\t\t<repeats>\n\t\t\t\t\t<every>1</every>\n\t\t\t\t\t<on>\n\t\t\t\t\t\t<day>none</day>\n\t\t\t\t\t\t<day_num>0</day_num>\n\t\t\t\t\t\t<day_of>none</day_of>\n\t\t\t\t\t</on>\n\t\t\t\t\t<period>daily</period>\n\t\t\t\t</repeats>\n\t\t\t</properties>\n\t\t\t<version>1.0.0</version>\n\t\t\t<object_type>calendar_recurring</object_type>\n\t\t</calendar_recurring_01EY8SMOBR1750xPnHwY5KH69XVI3IxnU8b>\n\t</calendars>\n</root>",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01I2MJW471NAI01SPd4GWTDmbMO7l5eY5W5",
+            "name": "JSONPath Query",
+            "title": "JSONPath Query",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "JSONPath Query",
+              "input_json": "{\n  \"id\": \"01ET3SDLZ352231pFTOsmSrYVZgt3q3NEI4\",\n  \"schema_id\": \"01ENKIH64V23J6IUXXO9xGtKI3vfzhwxirI\",\n  \"name\": \"CA Core Actions\",\n  \"title\": \"CA Core Actions\",\n  \"type\": \"generic.workflow\",\n  \"base_type\": \"workflow\",\n  \"variables\": [\n    {\n      \"id\": \"01EZX1BP7UNOD0k1krCV9gVlxlST8Ul6cUz\",\n      \"schema_id\": \"01ENKIO842XXF6Zfg3cenx0eqlHi5sNZwLV\",\n      \"properties\": {\n        \"value\": 55,\n        \"scope\": \"local\",\n        \"name\": \"Local Loop Limit 55\",\n        \"type\": \"datatype.integer\",\n        \"is_required\": false\n      },\n      \"created_by\": \"1555\",\n      \"created_on\": \"2020-04-09T18:08:40Z\",\n      \"updated_by\": \"1555\",\n      \"updated_on\": \"2020-04-09T18:29:15Z\",\n      \"object_type\": \"variable_workflow\",\n      \"unique_name\": \"variable_workflow_01EZX1BRS07NE7iYwrSFC7G4WOGeXX38cKg\"\n    }\n  ],\n  \"dynamic_map\": {\n    \"column_map\": null,\n    \"action_variable_map\": {\n      \"01ET3SK4MEUZJ05f9fOzvsg6gsb45dcSGQY\": {\n        \"jsonpath_queries\": {\n          \"type\": \"object\",\n          \"output_variable\": {\n            \"name\": {\n              \"name\": \"name\",\n              \"type\": \"string\"\n            }\n          }\n        }\n      },\n      \"01ET3SRZWEGFP5hqwfHlMHWjlH1xCovDpWb\": {\n        \"xpath_queries\": {\n          \"type\": \"object\",\n          \"output_variable\": {\n            \"book\": {\n              \"name\": \"book\",\n              \"type\": \"string\"\n            }\n          }\n        }\n      },\n      \"01EZWS6RA3AGC6JT2DuWEdiDnsx5Ecdk99x\": {\n        \"source_array\": {\n          \"type\": \"array\",\n          \"item_type\": \"string\"\n        }\n      }\n    },\n    \"action_output_table\": null\n  },\n  \"properties\": {\n    \"atomic\": {\n      \"is_atomic\": false\n    },\n    \"delete_workflow_instance\": false,\n    \"display_name\": \"CA Core Actions\",\n    \"runtime_user\": {\n      \"override_target_runtime_user\": false,\n      \"specify_on_workflow_start\": false,\n      \"target_default\": true\n    },\n    \"target\": {\n      \"execute_on_target_group\": false,\n      \"execute_on_workflow_target\": false,\n      \"no_target\": true,\n      \"specify_on_workflow_start\": false\n    }\n  },\n  \"actions\": [\n    {\n      \"id\": \"01EZWRDUPT5846XaVBSX0fKAqEWK80PY4my\",\n      \"name\": \"While Loop\",\n      \"title\": \"While Loop\",\n      \"type\": \"logic.while\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"blocks\": [\n        {\n          \"id\": \"01EZWRDY858K83eioubaMCSpzmnaS1iSvMN\",\n          \"name\": \"Condition Branch\",\n          \"title\": \"Condition Branch\",\n          \"type\": \"logic.condition_block\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"actions\": [\n            {\n              \"id\": \"01ET3SU1V8ZVB7lJVXFZhQNCFuq0vJi6RwK\",\n              \"name\": \"XSL Transform\",\n              \"title\": \"XSL Transform\",\n              \"type\": \"core.xsl_transform\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SII04YCF3LW7pbfuoJIHUSKVidM6Nu\",\n              \"name\": \"Find String\",\n              \"title\": \"Find String\",\n              \"type\": \"core.find_string\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SSTKYAS00sCjv3NqPKkDQo1wYmp8R2\",\n              \"name\": \"XSL Transform\",\n              \"title\": \"XSL Transform\",\n              \"type\": \"core.xsl_transform\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SRZWEGFP5hqwfHlMHWjlH1xCovDpWb\",\n              \"name\": \"XPath Query\",\n              \"title\": \"XPath Query\",\n              \"type\": \"core.xpathquery\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            }\n          ],\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        }\n      ],\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01EZXBB5XHZ3Z0z3DWx7HXVtswMYpAefoJJ\",\n      \"name\": \"Split String\",\n      \"title\": \"Split String\",\n      \"type\": \"core.splitstring\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01EZWS6RA3AGC6JT2DuWEdiDnsx5Ecdk99x\",\n      \"name\": \"For Each\",\n      \"title\": \"For Each\",\n      \"type\": \"logic.for_each\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"actions\": [\n        {\n          \"id\": \"01EZWT3OEMURG4FRwvj3Di0Mw4btQr458Os\",\n          \"name\": \"Convert Json to Xml\",\n          \"title\": \"Convert Json to Xml\",\n          \"type\": \"core.json2xml\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        },\n        {\n          \"id\": \"01EZWTGQF0E7V4iO9m4SUcbltsH1f76H5CF\",\n          \"name\": \"Convert Xml to Json\",\n          \"title\": \"Convert Xml to Json\",\n          \"type\": \"core.xml2json\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        },\n        {\n          \"id\": \"01EZX3XYF786A64OYxQzSWnLuolL5ZkwwIE\",\n          \"name\": \"To Upper\",\n          \"title\": \"To Upper\",\n          \"type\": \"core.string2upper\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        },\n        {\n          \"id\": \"01ET3SPLYBH326aTf4Ab6E1ztdFz3eKNkK2\",\n          \"name\": \"To Lower\",\n          \"title\": \"To Lower\",\n          \"type\": \"core.string2lower\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        },\n        {\n          \"id\": \"01ET3SMH6WKZY3Vxz5jMyhh7ibNlaFDqdVC\",\n          \"name\": \"Replace String\",\n          \"title\": \"Replace String\",\n          \"type\": \"core.replacestring\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"updated\"\n          }\n        }\n      ],\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"updated\"\n      }\n    },\n    {\n      \"id\": \"01EZXHG97CMTN0QDVCWa8vRq7kQZTXJxkk1\",\n      \"name\": \"Parallel Block\",\n      \"title\": \"Parallel Block\",\n      \"type\": \"logic.parallel\",\n      \"base_type\": \"activity\",\n      \"valid\": true,\n      \"subworkflow_valid\": false,\n      \"skip_execution\": false,\n      \"blocks\": [\n        {\n          \"id\": \"01EZXHGCX9OLH0plNwuJx16od2JjRca0VEc\",\n          \"name\": \"Parallel Branch\",\n          \"title\": \"Parallel Branch\",\n          \"type\": \"logic.parallel_block\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"actions\": [\n            {\n              \"id\": \"01ET3SNZD0LSL4wXgwimeUo2PN5qfSsvLme\",\n              \"name\": \"Split String\",\n              \"title\": \"Split String\",\n              \"type\": \"core.splitstring\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SORPNWOY4OLQhwZLZaLtuj0NMxpYVK\",\n              \"name\": \"Substring\",\n              \"title\": \"Substring\",\n              \"type\": \"core.substring\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SR5HTHRX5NXKgu3RRh07aM38qfOckd\",\n              \"name\": \"Trim String\",\n              \"title\": \"Trim String\",\n              \"type\": \"core.trim_string\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SHPLER8G4VJ6MIPc9meYq1ihv0J3Xw\",\n              \"name\": \"Escape Regex Metacharacters\",\n              \"title\": \"Escape Regex Metacharacters\",\n              \"type\": \"core.escape_regex\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SEZCK5PF6ItI1gaisfWc1ykrnN59u9\",\n              \"name\": \"Calculate Date Time Difference\",\n              \"title\": \"Calculate Date Time Difference\",\n              \"type\": \"core.calculate_date_time_difference\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            }\n          ],\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"created\"\n          }\n        },\n        {\n          \"id\": \"01EZXHGCXAIQB34Z5RoPuI6gQMYMAahpsoq\",\n          \"name\": \"Parallel Branch\",\n          \"title\": \"Parallel Branch\",\n          \"type\": \"logic.parallel_block\",\n          \"base_type\": \"activity\",\n          \"valid\": true,\n          \"subworkflow_valid\": false,\n          \"skip_execution\": false,\n          \"actions\": [\n            {\n              \"id\": \"01ET3SN8NOAEG3m4rqNl5zDaK65h7kf9Up7\",\n              \"name\": \"Sleep\",\n              \"title\": \"Sleep\",\n              \"type\": \"core.sleep\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SLO08QSP5Bhc4dortDZd6aUZWukSqq\",\n              \"name\": \"Parse Date\",\n              \"title\": \"Parse Date\",\n              \"type\": \"core.parse_date\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SKWCMHMN7YhV1nZouPp0anV2KX6GEv\",\n              \"name\": \"Match Regular Expression\",\n              \"title\": \"Match Regular Expression\",\n              \"type\": \"core.matchregex\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SK4MEUZJ05f9fOzvsg6gsb45dcSGQY\",\n              \"name\": \"JSONPath Query\",\n              \"title\": \"JSONPath Query\",\n              \"type\": \"corejava.jsonpathquery\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SJASYHFT0eqmhCvmMZLPe1I02VGB9s\",\n              \"name\": \"Format Date\",\n              \"title\": \"Format Date\",\n              \"type\": \"core.format_date\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            },\n            {\n              \"id\": \"01ET3SE3WYU9R50uGzLljPxN1oZZNuGIb2q\",\n              \"name\": \"Calculate Date\",\n              \"title\": \"Calculate Date\",\n              \"type\": \"core.calculate_date\",\n              \"base_type\": \"activity\",\n              \"valid\": true,\n              \"subworkflow_valid\": false,\n              \"skip_execution\": false,\n              \"invalid_properties\": null,\n              \"status\": {\n                \"state\": \"updated\"\n              }\n            }\n          ],\n          \"invalid_properties\": null,\n          \"status\": {\n            \"state\": \"created\"\n          }\n        }\n      ],\n      \"invalid_properties\": null,\n      \"status\": {\n        \"state\": \"created\"\n      }\n    }\n  ],\n  \"invalid_properties\": null,\n  \"valid\": true,\n  \"workflow_valid\": true,\n  \"created_on\": \"2020-04-01T17:57:27Z\",\n  \"created_by\": \"1555\",\n  \"updated_on\": \"2020-04-09T18:31:51Z\",\n  \"updated_by\": \"1555\",\n  \"started_on\": \"2020-04-09T18:28:36Z\",\n  \"owner\": \"1555\",\n  \"categories\": [\n    \"01ENKIVG8TRYQ1ohQkoPczHHxi3EABseM6V\"\n  ],\n  \"status\": {\n    \"state\": \"updated\"\n  },\n  \"unique_name\": \"definition_workflow_01ET3SDN67TE77mPPIVvt1CCGrA60HKqW6Y\",\n  \"permissions\": [\n    \"run\",\n    \"manage\"\n  ]\n}",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "All the Action Ids",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$..valid",
+                  "jsonpath_query_name": "All actions status",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$..invalid_properties",
+                  "jsonpath_query_name": "invalid Properties",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01I2MJWFTRCNC6llG4biaIiWMBQXbq8PpjM",
+            "name": "Replace String",
+            "title": "Replace String",
+            "type": "core.replacestring",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Replace String",
+              "input_string": "About Action Orchestrator\nAction Orchestrator is a powerful workflow automation and technology-agnostic cross-domain orchestration product. This orchestration platform easily binds Cisco products together and connects smoothly to third-party products and open-source solutions, providing a unified solution. The following designs are applicable to provide advanced automation:\n\nCloud native application with micro services running in containers help maintain a relatively lesser cloud footprint.\n\nAvailable as a Service and can support multi-tenant and multi instance options.\n\nFor information on infrastructure requirements see Prepare Infrastructure.\n\nFor information on installation see Suite Installer 5.1 Home.\n\nCan be embedded into other products and solutions. Here are two scenarios:\n\nAction Orchestrator shall be embedded in one or more base or host Cisco applications (CloudCenter Suite) that provide GTM vehicles for the underlying platform and frameworks.\n\nOther Cisco platforms and applications (NSO, MSX, DNAC, Webex Teams, and so forth.) may choose to use Action Orchestrator capabilities by embedding a Action Orchestrator automation framework; or by a loose or tight coupling with the Action Orchestrator.\n\nService-oriented Orchestration provides the agility to model and act on IT services. These features make creating orchestration active and dynamic, and allow for:\n\nDefining new, higher-level services in the system, and deploy new services quickly.\n\nIn real-time, after these new types of services have been defined, creating real-time instances of those new services.\n\nUsing events to watch for patterns in these services, enabling policy-driven automation.\n\nService-oriented Orchestration combines several industry trends to synthesize a fresh approach to orchestration: \n\nAction Orchestrator provides fluid mechanisms to exchange service information with the CloudCenter Suite, advancing the integration of these systems.\n\nThe feature delivers many of the capabilities of object-oriented design and programming into the Run-Book-Automation (RBA) / IT Process Automation (ITPA) world. The shift from traditional orchestration to Service-Oriented Orchestration is similar to the shift from procedural to object-oriented programming. Today, virtually all programming is done with object-oriented languages, and object-oriented design has transformed the industry to higher levels of productivity and quality. Service-Oriented Orchestration holds the same promise.\n\nThe feature aligns to industry standards like the DMTF Common Information Model (CIM) and the Topology and Orchestration Specification for Cloud Applications (TOSCA).\n\ncontinouning\n\ntask 1\n\n",
+              "replace_list": [
+                {
+                  "replaced_string": "Action Orchestrator",
+                  "replacement_string": "Cisco Action Orchestrator"
+                },
+                {
+                  "replaced_string": "continued",
+                  "replacement_string": "Model-based automation is becoming popular via script-based tools, especially in the configuration management space. Action Orchestrator combines the capability to model services with the openness to integrate with these tools to leverage their strengths. Moreover, the feature allows model-driven orchestration atop legacy tools to bring the full power of model-driven approaches to integrate with other IT tools."
+                },
+                {
+                  "replaced_string": "Feature1",
+                  "replacement_string": "Workflows: You will be able to switch between My Workflows and Atomic Workflows page. Both the page displays the existing workflows. To create a new workflow click on NEW WORKFLOW tab. This page displays the list of created workflows along with their ready state. You can click on the icons of the workflow home page to perform the following tasks:"
+                },
+                {
+                  "replaced_string": "Feature 2",
+                  "replacement_string": "Targets: You will be able to switch between Targets and Target Groups page.\n\nThe Targets page displays the list of targets added to the Action Orchestrator with their Display Name (along with the target type), Created ON and Owner information. You can see the target Used by details, delete the added target by performing the Delete action, and Change Owner using the drop down from the Actions column. To add a new target, click on NEW TARGET."
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01I2MJWPKIGAL5xcMbeVg3r3hUaKD7oCtPS",
+            "name": "Split String",
+            "title": "Split String",
+            "type": "core.splitstring",
+            "base_type": "activity",
+            "properties": {
+              "boundaries": [
+                {
+                  "boundary": ","
+                },
+                {
+                  "boundary": ":"
+                },
+                {
+                  "boundary": "( )"
+                }
+              ],
+              "continue_on_failure": false,
+              "display_name": "Split String",
+              "input_string": "Calendars: The Calendars page displays the Display Name (along with the type), Owner, and Last Modified details. You can delete the Calendars by performing the Delete action and Change Owner using the drop down from the Actions column. Calendars are reusable for schedules within many workflows. For more information, see section Configuring Calendars.\n\nTasks: The Tasks page displays the Display Name, Status, Priority, Due date, Task Requestor, Task Owner, Task Assignees, Last Modified details. You can Approve or Reject the task by using the dropdown from the Actions column. For more information, see section Configuring Tasks.\n\nSchedules: The Schedules page displays the Display Name (along with the type), Owner, and Last Modified details. You can see the schedules Used by  details, delete the added schedule by performing the Delete action, and Change Owner using the drop down from the Actions column. To add a new schedule, click on New Schedule.\n\nWhen defining a process, you can specify when the process will execute. You can execute a process based on a schedule. A schedule specifies one or more times of day, and is combined with a calendar that specifies which days the schedule should initiate the process. For more information, see section Configuring Schedules.",
+              "remove_empty": true,
+              "skip_execution": false,
+              "use_regexp": false
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01I2MJX09NUN21PfTvyG57qWDLsX226BUGp",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01I2MJXD77KZK08PPaA3BOoJGuoeeLxXznI",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": true,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01I2MJXPP3L1X0p3wodGMwDvHHRfa1sDaXV",
+                "name": "Find String",
+                "title": "Find String",
+                "type": "core.find_string",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Find String",
+                  "searched_string": "Auto-Refresh: You can switch ON or OFF the auto refresh using the Switch icon on the top right.",
+                  "skip_execution": false,
+                  "source": "Creating a Basic Workflow\nThe following procedure provides information on creating a basic workflow in Action Orchestrator:\n\nIdentify any drag-and-drop objects in the toolbox that will be required by your new workflow.\n\nChoose Workflows > My Workflows > NEW WORKFLOW.\n\nOn the Workflow Properties panel, define the workflow properties (see Adding Workflow Properties).\n\nFrom the Activities pane, drag and drop the appropriate items onto the workflow pane (see Activities Panel).\n\nOn the Properties panel, define the properties for each object selected on the workflow pane. The available property pages are determined by the selected objects (see Activities).\n\nWhen all of the property pages are complete, click VALIDATE on the header to validate the workflow.\n\nIf the workflow is not valid, click on activities that are orange and determine warnings in the upper right corner of the Properties pane. Enter the required information and validate again.\n\nOnce the workflow is successfully validated, click Commit on the header to export the workflow to your repository.\n\nOn the Commit panel, enter the File Name and Commit Message.\n\nClick Commit, to export the workflow.\n\nThis is an optional step.\n\nFor more information on workflow export, see Export Workflows.\n\nFor more information on repository, see Git Repositories.\n\nOnce the workflow is successfully validated, click RUN on the header to execute the workflow.\n\nOnce the workflow execution starts, you will be taken to the Runs Page, where you can observe the workflow:\n\nStatus: Such as Running, Success, and Failed in the top left next to the workflow name.\n\nAuto-Refresh: You can switch ON or OFF the auto refresh using the Switch icon on the top right.\n\nCancel Run: Click Cancel Run on the top right to cancel the running workflow.\n\nRun time: Displays the time taken for the completion of the workflow on the top right.\n\nFor more information, see Runs.\n\nClick Edit Workflow on the top right of the Run's page to edit the workflow.This option will be enabled only after workflow completion."
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJY1F07NH43sgcTpeqaeO6Kni2fyhV8",
+                "name": "Substring",
+                "title": "Substring",
+                "type": "core.substring",
+                "base_type": "activity",
+                "properties": {
+                  "begin": 25,
+                  "continue_on_failure": false,
+                  "display_name": "Substring",
+                  "end": 28,
+                  "skip_execution": false,
+                  "source": "Calendars: The Calendars page displays the Display Name (along with the type), Owner, and Last Modified details. You can delete the Calendars by performing the Delete action and Change Owner using the drop down from the Actions column. Calendars are reusable for schedules within many workflows. For more information, see section Configuring Calendars.\n\nTasks: The Tasks page displays the Display Name, Status, Priority, Due date, Task Requestor, Task Owner, Task Assignees, Last Modified details. You can Approve or Reject the task by using the dropdown from the Actions column. For more information, see section Configuring Tasks.\n\nSchedules: The Schedules page displays the Display Name (along with the type), Owner, and Last Modified details. You can see the schedules Used by  details, delete the added schedule by performing the Delete action, and Change Owner using the drop down from the Actions column. To add a new schedule, click on New Schedule.\n\nWhen defining a process, you can specify when the process will execute. You can execute a process based on a schedule. A schedule specifies one or more times of day, and is combined with a calendar that specifies which days the schedule should initiate the process. For more information, see section Configuring Schedules."
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJYCD6P146alGUh2eVHrdFMFOtcIK1a",
+                "name": "Trim String",
+                "title": "Trim String",
+                "type": "core.trim_string",
+                "base_type": "activity",
+                "properties": {
+                  "characters_to_trim": ">",
+                  "continue_on_failure": false,
+                  "display_name": "Trim String",
+                  "skip_execution": false,
+                  "source": "Ansible Tower Get Job Info\nUse the Ansible Tower Get Job Info activity to get information and status about the job.\n\nTo define the Ansible Tower Get Job Info activity:\n\nIn the Workflow Editor Toolbox, choose Activities > Meraki > Ansible Tower Get Job Info, then drag and drop the activity onto the Workflow pane.\n\nOn the Workflow Properties pane, enter the following information:\n\nUnder General, specify the following information:\n\nDisplay Name: Enter the unique display name for the activity.\n\nDescription: Enter the brief description about the activity.\n\nActivity Timeout (Seconds): Enter the number of seconds to wait for Ansible Tower Get Job Info activity to fail because it timed out.\n\nCheck the Continue Workflow Execution on Failure check box to continue the workflow execution on failure of the activity.\n\nUnder Target, specify the following information:\n\nUse Workflow Target: Click this radio button to use the workflow target.\n\nOverride Workflow Target: Click this radio button to override the workflow target. You can select the appropriate target or +ADD NEW  from the dropdown list. For more information, see Ansible Tower Endpoint.\n\nUse Workflow Target Group: Check this radio button to use the workflow target group.\n\nOverride Workflow Target Group Criteria: Check this radio button to override the workflow target group criteria.\n\nUnder Credentials, specify the following information:\n\nUse Target's Default Account Key: Click this radio button to use the target's default account key.\n\nOverride Account Key: Click this radio button to override the workflow account key. You can select the appropriate account key or +ADD NEW from the dropdown list. For more information, see Ansible Tower Credentials.\n\nUnder Ansible Tower, specify the following information or click Variable Reference icon to choose any variable:\n\nJob ID: Enter the job ID to identify the job.",
+                  "trim_leading": true,
+                  "trim_trailing": true
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJYNQE8554tT9l9O1DKOfrXRQEB3tLX",
+                "name": "Format Date",
+                "title": "Format Date",
+                "type": "core.format_date",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "Format Date",
+                  "format_string": "02-01-2006",
+                  "original_date": "2006-01-02T15:04:05Z",
+                  "skip_execution": false,
+                  "use_custom_format": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJYYCH04N2FfDsi73qGfiwPhtR23fUq",
+                "name": "Calculate Date Time Difference",
+                "title": "Calculate Date Time Difference",
+                "type": "core.calculate_date_time_difference",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "Calculate Date Time Difference",
+                  "original_date": "Mon, 02 Jan 2018 15:04:05 MST",
+                  "skip_execution": false,
+                  "subtract_date": "Mon, 01 Jan 2018 15:04:05 MST"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01I2MJZAE32UP0HmhrqA5idK5ePTuDcHXsp",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01I2MJZKFBSLM2yrD88q5CVjPkzKqqmZDjS",
+                "name": "XPath Query",
+                "title": "XPath Query",
+                "type": "core.xpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "XPath Query",
+                  "input_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<bookstore>\n\n<book category=\"cooking\">\n  <title lang=\"en\">Everyday Italian</title>\n  <author>Giada De Laurentiis</author>\n  <year>2005</year>\n  <price>30.00</price>\n</book>\n\n<book category=\"children\">\n  <title lang=\"en\">Harry Potter</title>\n  <author>J K. Rowling</author>\n  <year>2005</year>\n  <price>29.99</price>\n</book>\n\n<book category=\"web\">\n  <title lang=\"en\">XQuery Kick Start</title>\n  <author>James McGovern</author>\n  <author>Per Bothner</author>\n  <author>Kurt Cagle</author>\n  <author>James Linn</author>\n  <author>Vaidyanathan Nagarajan</author>\n  <year>2003</year>\n  <price>49.99</price>\n</book>\n\n<book category=\"web\">\n  <title lang=\"en\">Learning XML</title>\n  <author>Erik T. Ray</author>\n  <year>2003</year>\n  <price>39.95</price>\n</book>\n\n</bookstore>",
+                  "skip_execution": false,
+                  "xpath_queries": [
+                    {
+                      "xpath_query": "/bookstore/book[1]",
+                      "xpath_query_name": "First Book",
+                      "xpath_query_type": "string"
+                    },
+                    {
+                      "xpath_query": "/bookstore/book[last()-1]",
+                      "xpath_query_name": "Last But one",
+                      "xpath_query_type": "string"
+                    },
+                    {
+                      "xpath_query": "/bookstore/book[position()<3]",
+                      "xpath_query_name": "First two Books",
+                      "xpath_query_type": "string"
+                    },
+                    {
+                      "xpath_query": "/bookstore/book[price>35.00]",
+                      "xpath_query_name": "Value Gretar than 35",
+                      "xpath_query_type": "string"
+                    },
+                    {
+                      "xpath_query": "/bookstore/book[price>35.00]/title",
+                      "xpath_query_name": "Select all titles which is greater than 35",
+                      "xpath_query_type": "string"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MJZYP40KW1Sm0kgqTlwRi2t87CHi6vr",
+                "name": "Sleep",
+                "title": "Sleep",
+                "type": "core.sleep",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": true,
+                  "display_name": "Sleep",
+                  "skip_execution": false,
+                  "sleep_interval": 2
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MK0A2O3UW3hvRrLuT8ZYBxvYNSlZx8y",
+                "name": "Parse Date",
+                "title": "Parse Date",
+                "type": "core.parse_date",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Parse Date",
+                  "format_string": "02 Jan 06 15:04 MST",
+                  "input_string": "01 jan 18 15:55 MST",
+                  "skip_execution": false,
+                  "use_custom_format": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MK0KMD6JI00ISsdndhYCAGMOJw7nx2V",
+                "name": "Match Regular Expression",
+                "title": "Match Regular Expression",
+                "type": "core.matchregex",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Match Regular Expression",
+                  "input_regex": "(?i)PreReleasE",
+                  "input_string": "On the ADD NEW TARGET Panel, perform the following procedure to add Kafka Endpoint target:\n\nUnder Target Type: Select the Kafka Endpoint target type from the dropdown list.\n\nUnder General, specify the appropriate information:\n\nDisplay Name: Enter the unique display name for the target.\n\nDescription: Enter the brief description about the target.\n\nUnder Account Key, specify the PreReleasE appropriate information:\n\nSelect True or False from the No Account Key dropdown list.\n\nselect the appropriate existing Account Key or click ADD NEW from the Default Account Key dropdown list, see Kafka Authentication or Kafka Certificate Authentication.\n\nUnder Kafka, enter the following information:\nPreReleasE\nHost/IPAddress: Enter the host name or IP address for the Kafka Endpoint.\n\nPort: Enter the Kafka port number; the default port is 9092.\n\nSSL enable: Indicates if SSL is enabled PreReleasE on the Kafka Endpoint.\n\nDisable server certification validation: Indicates if server certification validation is disabled on the Kafka Endpoint.\n\nClick Submit, to add and save the Target.",
+                  "match_case": true,
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01I2MK0USOQBA3iTekc6d0CC3ANf4EP5qbC",
+                "name": "Calculate Date",
+                "title": "Calculate Date",
+                "type": "core.calculate_date",
+                "base_type": "activity",
+                "properties": {
+                  "adjustment": 55,
+                  "continue_on_failure": true,
+                  "display_name": "Calculate Date",
+                  "original_date": "02-01-2018",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01N4N9F7UCWEZ65phfE2r6kGPeMah0Wp8dc",
+        "name": "Calculate Date Time Difference",
+        "title": "Calculate Date Time Difference",
+        "type": "core.calculate_date_time_difference",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Calculate Date Time Difference",
+          "original_date": "$activity.definition_activity_01I2MJZAE32UP0HmhrqA5idK5ePTuDcHXsp.output.end_time$",
+          "skip_execution": false,
+          "subtract_date": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.output.start_time$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01N4N9RA2OJ6R6YiS3OmxEHyJWb3WoP53M1",
+        "name": "Set Variables",
+        "title": "Execution Time",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "Execution Time",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.output.variable_workflow_01N4N9D3LFDTY5NxYah8vrqWLD9f3wUU0nd$",
+              "variable_value_new": "$activity.definition_activity_01N4N9F7UCWEZ65phfE2r6kGPeMah0Wp8dc.output.total_minutes$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_01I2MJQR1D2WK0IHMsSSnM5lR1QFlhvk0KR.output.variable_workflow_01O4MJN0LOEFI6uS9mwUBtGolQb92H8XmLk$",
+              "variable_value_new": "1"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01GUFX9FVCE283ZPiHKK9kqAufyYonIV94A"
+    ]
+  },
+  "categories": {
+    "category_01GUFX9FVCE283ZPiHKK9kqAufyYonIV94A": {
+      "unique_name": "category_01GUFX9FVCE283ZPiHKK9kqAufyYonIV94A",
+      "name": "CA Web Services",
+      "title": "CA Web Services",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
