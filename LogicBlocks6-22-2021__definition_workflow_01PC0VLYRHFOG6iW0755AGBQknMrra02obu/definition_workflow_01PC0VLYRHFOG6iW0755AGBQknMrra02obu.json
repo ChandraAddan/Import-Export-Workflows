@@ -65,6 +65,20 @@
         "object_type": "definition_activity"
       },
       {
+        "unique_name": "definition_activity_01PDAL3YKRLJ440mNRq78Mq7fp9YOfJ2UHU",
+        "name": "To Upper",
+        "title": "To Upper (Duplicate)",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper (Duplicate)",
+          "skip_execution": false,
+          "source": "automation"
+        },
+        "object_type": "definition_activity"
+      },
+      {
         "unique_name": "definition_activity_01PC0VMATFP8F3jBb4YHIekCwcnrXJAIS0g",
         "name": "Condition Block",
         "title": "Condition Block",
