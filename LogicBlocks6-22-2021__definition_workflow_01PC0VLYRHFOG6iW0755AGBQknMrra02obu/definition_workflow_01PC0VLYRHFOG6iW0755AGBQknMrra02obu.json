@@ -1,0 +1,681 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01PC0VLYRHFOG6iW0755AGBQknMrra02obu",
+    "name": "CA Logic Blocks 6/22/2021",
+    "title": "CA Logic Blocks 6/22/2021",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "Local Integer",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PC0VLYHMZ0C2eGZMNcyM0xJky3hFrRx6u",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "set variable",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PC0VLYHN2HA0WeDrdnvDjFaNkjZNQlopE",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA Logic Blocks 6/22/2021",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01PC0VM6M8QJT7GcBZJYlfxzwXCdGXqhr8X",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "automation"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PC0VMATFP8F3jBb4YHIekCwcnrXJAIS0g",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01PC0VMFI1K1U1s9Ty0HDjuMruau6R5Il0y",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01PC0VM6M8QJT7GcBZJYlfxzwXCdGXqhr8X.output.uppercase_text$",
+                "operator": "eq",
+                "right_operand": "AUTOMATION"
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VMK3WDQU7LNYmH9HuLGj7Cs3WEONcn",
+                "name": "To Upper",
+                "title": "To Upper",
+                "type": "core.string2upper",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "To Upper",
+                  "skip_execution": false,
+                  "source": "automation"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PC0VMOLACA04lOKqzgczgKh00Z98761a6",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01PC0VM6M8QJT7GcBZJYlfxzwXCdGXqhr8X.output.uppercase_text$",
+                "operator": "ne",
+                "right_operand": "Automation"
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VMV5M57C1TfpTM2jkTBQxSAB7eNCRY",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "continue_on_failure": false,
+                  "display_name": "Completed",
+                  "result_message": "upper Action Got Failed",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01PC0VMYJPDHB4G1WU7JlkwQLcfEwaGyrLC",
+        "name": "Group",
+        "title": "Group",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Group",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01PC0VN38JEL33LRHq9z4AtuHc6N8PMGmas",
+            "name": "Sleep",
+            "title": "Sleep",
+            "type": "core.sleep",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Sleep",
+              "skip_execution": false,
+              "sleep_interval": 1
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01PC0VN6OWKON4KQnJ4jlGDfHyxjeThHfhz",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01PC0VN9W3S072dcFwKFrZjmwBvyKUCw9zO",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VND7POR45UFG366UQ9tBJISnGDld8K",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "a,b,c",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VNGFIVY85Eu0LqFkfzBlPfiLTRBGz3",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "skip_execution": false,
+                  "source_array": "[[$activity.definition_activity_01PC0VND7POR45UFG366UQ9tBJISnGDld8K.output.parts$]]"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01PC0VNQ54TA71Oa6JA2Ej8WlY2BSgLwasr",
+                    "name": "To Upper",
+                    "title": "To Upper",
+                    "type": "core.string2upper",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "To Upper",
+                      "skip_execution": false,
+                      "source": "[[$activity.definition_activity_01PC0VNGFIVY85Eu0LqFkfzBlPfiLTRBGz3.input.source_array[@]$]]"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01PC0VNVIQ9SP700l3Y2B8wLPp94PYTXUBe",
+                    "name": "Continue",
+                    "title": "Continue",
+                    "type": "logic.continue",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Continue",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PC0VNZK84931I26vtMoEBD8I5ZB3Wcv6Q",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VO37G5DJ2m9UMNqmKbytEFxHNSv8A5",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "a,b,c",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VO7SH27P1HtCPUNNTSS84VfJU5xMlB",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "skip_execution": false,
+                  "source_array": "[[$activity.definition_activity_01PC0VO37G5DJ2m9UMNqmKbytEFxHNSv8A5.output.parts$]]"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01PC0VOIC4Z3T5IN6piQfyh0pVD0Mwtirv2",
+                    "name": "To Upper",
+                    "title": "To Upper",
+                    "type": "core.string2upper",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "To Upper",
+                      "skip_execution": false,
+                      "source": "[[$activity.definition_activity_01PC0VO7SH27P1HtCPUNNTSS84VfJU5xMlB.input.source_array[@]$]]"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01PC0VONE6XB42YCT6cRjxr66eTfSLggwl4",
+                    "name": "Completed",
+                    "title": "Completed",
+                    "type": "logic.completed",
+                    "base_type": "activity",
+                    "properties": {
+                      "completion_type": "succeeded",
+                      "continue_on_failure": false,
+                      "display_name": "Completed",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PC0VOQQNKKM3mApQYuJhSGv82wIbbcA69",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VOV5GP817gmV1C1tK6HjSWgFyU9q3p",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "a,b,c",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VP0AU1L12hh1614FpFXYVWPJrCIowH",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "skip_execution": false,
+                  "source_array": "[[$activity.definition_activity_01PC0VOV5GP817gmV1C1tK6HjSWgFyU9q3p.output.parts$]]"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01PC0VP7UFI8F3HvTyKX0YXak0tY2QATl4I",
+                    "name": "To Upper",
+                    "title": "To Upper",
+                    "type": "core.string2upper",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "To Upper",
+                      "skip_execution": false,
+                      "source": "[[$activity.definition_activity_01PC0VP0AU1L12hh1614FpFXYVWPJrCIowH.input.source_array[@]$]]"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01PC0VPCODWHS4H2LnM9faLVn9j5tnkQ1ht",
+                    "name": "Break",
+                    "title": "Break",
+                    "type": "logic.break",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Break",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PC0VPGMLW5R7TyTIuuzWuZrY0INHq6DEO",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VPPHZOC17CTYXvJlLHJnY3DVddeCbD",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "a,b,c",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VPU00AQW1Gx2qGRtY5hrAraYPWyWxt",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "skip_execution": false,
+                  "source_array": "[[$activity.definition_activity_01PC0VPPHZOC17CTYXvJlLHJnY3DVddeCbD.output.parts$]]"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01PC0VQ123QSV1bJAybaNc2kiUHkd3FcAnJ",
+                    "name": "To Upper",
+                    "title": "To Upper",
+                    "type": "core.string2upper",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "To Upper",
+                      "skip_execution": false,
+                      "source": "[[$activity.definition_activity_01PC0VPU00AQW1Gx2qGRtY5hrAraYPWyWxt.input.source_array[@]$]]"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01PC0VQ6QA9XS06j3BZ6MFSI3CqBoi2yYOy",
+                    "name": "Break",
+                    "title": "Break",
+                    "type": "logic.break",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Break",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PC0VQA3QRG45ff6frqzyjCtwmCTCXiyKM",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VQDY28GT6TJNSF1qKpEwZ13HtnKAAk",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "a,b,c",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VQM8V2ZP6qcSNqOk8lag8lcvPqyvGR",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "skip_execution": false,
+                  "source_array": "[[$activity.definition_activity_01PC0VQDY28GT6TJNSF1qKpEwZ13HtnKAAk.output.parts$]]"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01PC0VQWFH6NH2uPVNXknc1HkdaLwq1w2Sf",
+                    "name": "To Upper",
+                    "title": "To Upper",
+                    "type": "core.string2upper",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "To Upper",
+                      "skip_execution": false,
+                      "source": "[[$activity.definition_activity_01PC0VQM8V2ZP6qcSNqOk8lag8lcvPqyvGR.input.source_array[@]$]]"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01PC0VR5KFU5N3BYekZk72A9ErQNWAYgrOf",
+                    "name": "Break",
+                    "title": "Break",
+                    "type": "logic.break",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Break",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01PC0VR9H96NM5DqAJLNamPeV4ZkLcmCYno",
+        "name": "While Loop",
+        "title": "While Loop",
+        "type": "logic.while",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "While Loop",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01PC0VRDNZ84A12tapfXdRGcW0w9JxoPxgv",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01PC0VLYRHFOG6iW0755AGBQknMrra02obu.local.variable_workflow_01PC0VLYHMZ0C2eGZMNcyM0xJky3hFrRx6u$",
+                "operator": "lt",
+                "right_operand": 5
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PC0VRI5N7O61W2zIfJzI1mh0rzxgXbd8q",
+                "name": "To Upper",
+                "title": "To Upper",
+                "type": "core.string2upper",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "To Upper",
+                  "skip_execution": false,
+                  "source": "While loop"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PC0VRMRA69Z00B6zJws2P7kv208sFvAxC",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01PC0VLYRHFOG6iW0755AGBQknMrra02obu.local.variable_workflow_01PC0VLYHMZ0C2eGZMNcyM0xJky3hFrRx6u$",
+                      "variable_value_new": "$workflow.definition_workflow_01PC0VLYRHFOG6iW0755AGBQknMrra02obu.local.variable_workflow_01PC0VLYHMZ0C2eGZMNcyM0xJky3hFrRx6u$+1"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01PC0VRS9ORSA0afTbVMkvt1ruvWjvqZEeL",
+        "name": "Start Point",
+        "title": "Start Point",
+        "type": "logic.start_point",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Start Point",
+          "skip_execution": true
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PC0VS144YG16k5dz3OIYpAWst2FPQkyPk",
+        "name": "Completed",
+        "title": "Completed",
+        "type": "logic.completed",
+        "base_type": "activity",
+        "properties": {
+          "completion_type": "succeeded",
+          "continue_on_failure": false,
+          "display_name": "Completed",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
