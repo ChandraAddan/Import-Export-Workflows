@@ -40,6 +40,64 @@
       "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
     ]
   },
+  "triggers": {
+    "triggerschedule_01Q23VAA25TML4nTUDyLYAnWw8RRSX2gC6J": {
+      "workflow_id": "definition_workflow_01Q23T46QMEBX1WgxPQ3TvueA5qpyBv8AQD",
+      "name": "S- Group Trigger",
+      "title": "",
+      "lowercase_name": "schedule.s-_group_trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01Q15ZZ43S2VD4NEcg9BgqEU2Pw6IMfXeGW",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01Q23VAA25TML4nTUDyLYAnWw8RRSX2gC6J",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01Q15ZZ43S2VD4NEcg9BgqEU2Pw6IMfXeGW": {
+      "unique_name": "schedule_01Q15ZZ43S2VD4NEcg9BgqEU2Pw6IMfXeGW",
+      "name": "Schedule with Group Calendars",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_group_01Q15ZMF2HNN07hmUEsv4oN1p2D7ejJRMRC",
+        "timezone": "America/Chicago",
+        "starttime": "12:01",
+        "interval_hours": 0,
+        "interval_minutes": 1,
+        "number_of_times": 3,
+        "display_name": "Schedule with Group Calendars",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "calendars": {
+    "calendar_group_01Q15ZMF2HNN07hmUEsv4oN1p2D7ejJRMRC": {
+      "unique_name": "calendar_group_01Q15ZMF2HNN07hmUEsv4oN1p2D7ejJRMRC",
+      "name": "CA Group Calendar",
+      "title": "CA Group Calendar",
+      "base_type": "calendar",
+      "type": "calendar.group",
+      "properties": {
+        "calendar_exclude": [
+          "calendar_recurring_1BMfMhDJAkJOyFHVPdAlXhGhG4r"
+        ],
+        "calendar_include": [
+          "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ"
+        ],
+        "date_range": {
+          "end_date": "2021-07-24",
+          "start_date": "2021-07-20"
+        }
+      },
+      "version": "1.0.0",
+      "object_type": "calendar_group"
+    }
+  },
   "runtime_users": {
     "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD": {
       "unique_name": "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD",
