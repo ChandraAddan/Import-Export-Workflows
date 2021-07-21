@@ -1,0 +1,57 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01Q23T46QMEBX1WgxPQ3TvueA5qpyBv8AQD",
+    "name": "Parent WF 7/21",
+    "title": "Parent WF 7/21",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Parent WF 7/21",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01Q23UACPSM482CjHhW86znT7HwxWYKj1sv",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "cisco"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD": {
+      "unique_name": "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD",
+      "name": "CA GIT Token",
+      "title": "CA GIT Token",
+      "type": "runtime_user.git_token_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT Token",
+        "token": "*****"
+      }
+    }
+  }
+}
