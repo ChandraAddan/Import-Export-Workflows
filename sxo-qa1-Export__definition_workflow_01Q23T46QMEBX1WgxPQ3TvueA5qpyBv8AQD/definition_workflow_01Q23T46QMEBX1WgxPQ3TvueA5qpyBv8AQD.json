@@ -42,12 +42,16 @@
         "type": "workflow.sub_workflow",
         "base_type": "subworkflow",
         "properties": {
+          "continue_on_failure": false,
           "display_name": "Child WF 7/21",
           "runtime_user": {
             "target_default": true
           },
+          "skip_execution": false,
           "target": {
-            "no_target": true
+            "execute_on_this_target": true,
+            "target_id": "definition_target_01PVZSFLETF764hGa0oxcWTDRyo5W4qB6Pf",
+            "target_type": "web-service.endpoint"
           },
           "workflow_id": "definition_workflow_01Q23VTLI9WPF6Z1kPiocapNjeFVw73GQH7"
         },
@@ -89,6 +93,19 @@
       "version": "1.0.0",
       "disabled": false,
       "unique_name": "triggerschedule_01Q23VAA25TML4nTUDyLYAnWw8RRSX2gC6J",
+      "object_type": "triggerschedule"
+    },
+    "triggerschedule_01Q246PUSDKT83DmFCZ175sjwBNTBDrHpVW": {
+      "workflow_id": "definition_workflow_01Q23VTLI9WPF6Z1kPiocapNjeFVw73GQH7",
+      "name": "CA- Group Schedules",
+      "title": "",
+      "lowercase_name": "schedule.ca-_group_schedules",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01Q15ZZ43S2VD4NEcg9BgqEU2Pw6IMfXeGW",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01Q246PUSDKT83DmFCZ175sjwBNTBDrHpVW",
       "object_type": "triggerschedule"
     }
   },
@@ -135,6 +152,25 @@
       "object_type": "calendar_group"
     }
   },
+  "targets": {
+    "definition_target_01PVZSFLETF764hGa0oxcWTDRyo5W4qB6Pf": {
+      "unique_name": "definition_target_01PVZSFLETF764hGa0oxcWTDRyo5W4qB6Pf",
+      "name": "CA HTTP",
+      "title": "CA HTTP",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "updatedcace",
+        "disable_certificate_validation": true,
+        "display_name": "CA HTTP",
+        "host": "www.google.com",
+        "ignore_proxy": true,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  },
   "runtime_users": {
     "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD": {
       "unique_name": "definition_runtime_user_01PW1YOD1OKID5f1MBdZkj8iYHCuCYKNPSD",
@@ -168,7 +204,9 @@
             "target_default": true
           },
           "target": {
-            "no_target": true
+            "target_type": "web-service.endpoint",
+            "target_id": "definition_target_01PVZSFLETF764hGa0oxcWTDRyo5W4qB6Pf",
+            "execute_on_workflow_target": true
           }
         },
         "object_type": "definition_workflow",
