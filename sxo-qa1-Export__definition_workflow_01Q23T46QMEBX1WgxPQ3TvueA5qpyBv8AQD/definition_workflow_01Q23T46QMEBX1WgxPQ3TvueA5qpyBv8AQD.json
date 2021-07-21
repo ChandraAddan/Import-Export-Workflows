@@ -52,6 +52,25 @@
           "workflow_id": "definition_workflow_01Q23VTLI9WPF6Z1kPiocapNjeFVw73GQH7"
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Q23ZZ5S6RH30nEFWlbyC2Pt0ESvwgy6d5",
+        "name": "CA Sleep Atomic",
+        "title": "CA Sleep Atomic",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "CA Sleep Atomic",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "execute_on_this_target_group": true,
+            "target_group_id": "01Q13MMVHNAKP3hGc0lTK6tZDUSOJNBnH6X"
+          },
+          "workflow_id": "definition_workflow_01PW6JSFE3UZZ2KgQT9XAWLNH5wHBQdo68J"
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
@@ -174,5 +193,8 @@
         ]
       }
     }
+  ],
+  "atomic_workflows": [
+    "definition_workflow_01PW6JSFE3UZZ2KgQT9XAWLNH5wHBQdo68J"
   ]
 }
