@@ -1,0 +1,106 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01Q7ZJNTRTTMG1ceSFnZnMblXcHewnMkNKk",
+    "name": "Parent1",
+    "title": "Parent1",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Parent1",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01Q7ZJWDH13UK5t944eXxM2oiRp6q2QYq6y",
+        "name": "Child1",
+        "title": "Child1",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Child1",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_01Q7ZJB692QRR4ORUSDUZ4xh3kTMOjHZ6C0"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01Q7WMI9H49BV0Qmk20FgcrFgQ4FdBosfPy": {
+      "unique_name": "definition_runtime_user_01Q7WMI9H49BV0Qmk20FgcrFgQ4FdBosfPy",
+      "name": "CA GIT",
+      "title": "CA GIT",
+      "type": "runtime_user.git_token_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT",
+        "token": "*****"
+      }
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_01Q7ZJB692QRR4ORUSDUZ4xh3kTMOjHZ6C0",
+        "name": "Child1",
+        "title": "Child1",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "Child1",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01Q7ZJIU9MMTN0vduzsWGS2PKFJVHx663wO",
+            "name": "To Upper",
+            "title": "To Upper",
+            "type": "core.string2upper",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "To Upper",
+              "skip_execution": false,
+              "source": "cisco"
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
+}
