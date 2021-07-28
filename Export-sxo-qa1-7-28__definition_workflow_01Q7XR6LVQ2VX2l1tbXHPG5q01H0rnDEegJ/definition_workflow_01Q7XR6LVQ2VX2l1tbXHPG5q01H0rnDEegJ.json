@@ -173,6 +173,30 @@
               "source": "ca"
             },
             "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01Q7ZDSZH2OAP7mxbyO1T6oqpnfY084YhE1",
+            "name": "HTTP Request",
+            "title": "HTTP Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "HTTP Request",
+              "method": "GET",
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01EOZMYH25RSG1rDfjUIjQwHEPioIElydk9"
+              }
+            },
+            "object_type": "definition_activity"
           }
         ],
         "categories": [
