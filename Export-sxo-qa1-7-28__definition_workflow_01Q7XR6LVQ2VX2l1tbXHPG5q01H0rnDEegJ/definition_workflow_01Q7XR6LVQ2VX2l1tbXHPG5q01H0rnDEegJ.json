@@ -59,6 +59,41 @@
       "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
     ]
   },
+  "triggers": {
+    "triggerschedule_01Q7ZG9P88OLW4mnvuv9SygxJBYR52cVL9R": {
+      "workflow_id": "definition_workflow_01Q7W2ZM38MYE6gV01nhMGd5CyAhwgGaPNq",
+      "name": "S- Trigger",
+      "title": "",
+      "lowercase_name": "schedule.s-_trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01Q74XCZ3L00A0mw7mxqWKsuKkgqzMkxOl3",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01Q7ZG9P88OLW4mnvuv9SygxJBYR52cVL9R",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01Q74XCZ3L00A0mw7mxqWKsuKkgqzMkxOl3": {
+      "unique_name": "schedule_01Q74XCZ3L00A0mw7mxqWKsuKkgqzMkxOl3",
+      "name": "CA Schedule",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "America/Chicago",
+        "starttime": "12:25",
+        "interval_hours": 0,
+        "interval_minutes": 1,
+        "number_of_times": 5,
+        "display_name": "CA Schedule",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
   "targets": {
     "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa": {
       "unique_name": "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
