@@ -39,6 +39,20 @@
           "workflow_id": "definition_workflow_01Q7W2ZM38MYE6gV01nhMGd5CyAhwgGaPNq"
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Q7ZAJ79FMJR6k0t2WSypRetU2jdgQgdrR",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "c"
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
