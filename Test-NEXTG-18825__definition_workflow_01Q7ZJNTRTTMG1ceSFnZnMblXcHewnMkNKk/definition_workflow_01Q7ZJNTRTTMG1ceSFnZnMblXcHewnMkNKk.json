@@ -38,6 +38,20 @@
           "workflow_id": "definition_workflow_01Q7ZJB692QRR4ORUSDUZ4xh3kTMOjHZ6C0"
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Q7ZNXY8V9B96TEuk23Owxl51v8S8pAEX8",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "cisco"
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
