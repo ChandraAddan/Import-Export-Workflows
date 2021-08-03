@@ -1,0 +1,424 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh",
+    "name": "Copy-Python Test",
+    "title": "Copy-Python Test",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Table Email",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01JL2RA0MB8HD60VdlcyssfoQwQ94v028IN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "PASS/FAIL Results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01JL2RA0MB4ZZ72XrjQDrZf2WviP1a75IPQ",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Copy-Python Test",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01JL2RARHVSJH7GRG5yRALaJrVSeCXFvjyw",
+        "name": "Parallel Block",
+        "title": "Python Script",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "Python Script",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01JL2RAZVN1OA3B8ZpM5WV2rcepNAbZJSiP",
+            "name": "Parallel Branch",
+            "title": "EXECUTE PYTHON SCRIPT 3",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": true,
+              "display_name": "EXECUTE PYTHON SCRIPT 3",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P",
+                "name": "Execute Python Script",
+                "title": "Basic Test",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Basic Test",
+                  "script": "print('Hello World!')\nprint('Welcome to Real Python!')",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl",
+                "name": "Execute Python Script",
+                "title": "Sleep 5 Seconds using Python script",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Sleep 5 Seconds using Python script",
+                  "script": "import time\n\ntime.sleep(5)\nfrom datetime import datetime\nimport pytz\n\ntz_CA = pytz.timezone('America/Chicago') \ndatetime_CA = datetime.now(tz_CA)\nprint(datetime_CA.strftime(\"%H:%M\"))",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01JL2RBS51JEH08tPBfLajwhYmnS42WRNGe",
+                "name": "Execute Python Script",
+                "title": "Execute Python Script for getting current Date",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Execute Python Script for getting current Date",
+                  "script": "from datetime import date\ntoday = date.today()\nprint(\"Today's date:\", today)",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01JL2RBYZTYC24zuPuLUN18URDvcWybrsEm",
+            "name": "Parallel Branch",
+            "title": "EXECUTE PYTHON SCRIPT 3",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": true,
+              "display_name": "EXECUTE PYTHON SCRIPT 3",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf",
+                "name": "Execute Python Script",
+                "title": "Getting current dates in different formats",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Getting current dates in different formats",
+                  "script": "from datetime import date\ntoday = date.today()\n# dd/mm/YY\nd1 = today.strftime(\"%d/%m/%Y\")\nprint(\"d1 =\", d1)\n# Textual month, day and year\t\nd2 = today.strftime(\"%B %d, %Y\")\nprint(\"d2 =\", d2)\n# mm/dd/y\nd3 = today.strftime(\"%m/%d/%y\")\nprint(\"d3 =\", d3)\n# Month abbreviation, day and year\t\nd4 = today.strftime(\"%b-%d-%Y\")\nprint(\"d4 =\", d4)",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN",
+                "name": "Execute Python Script",
+                "title": "Make HTTP Call",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Make HTTP Call",
+                  "script": "import requests\na = requests.get('https://www.google.com')",
+                  "script_queries": [
+                    {
+                      "script_query": "a",
+                      "script_query_name": "a",
+                      "script_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo",
+                "name": "Execute Python Script",
+                "title": "Get  HTTP Call response",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Get  HTTP Call response",
+                  "script": "import requests\na = requests.get('http://www.google.com')\nStatusCode = a.status_code\nText = a.text\nJson = a.json\nHeaders = a.headers",
+                  "script_queries": [
+                    {
+                      "script_query": "StatusCode",
+                      "script_query_name": "StatusCode ",
+                      "script_query_type": "string"
+                    },
+                    {
+                      "script_query": "Text",
+                      "script_query_name": "Text ",
+                      "script_query_type": "string"
+                    },
+                    {
+                      "script_query": "Json",
+                      "script_query_name": "Json",
+                      "script_query_type": "string"
+                    },
+                    {
+                      "script_query": "Headers",
+                      "script_query_name": "Headers ",
+                      "script_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01JL2RCRHC4H46HwlwVkXFqItqxrq9PPftQ",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01JL2RD1LSRGX5BprVBRkoxx9Lbx6Kvg0WN",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": {
+                    "left_operand": {
+                      "left_operand": {
+                        "left_operand": "$activity.definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "operator": "and",
+                      "right_operand": {
+                        "left_operand": "$activity.definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      }
+                    },
+                    "operator": "and",
+                    "right_operand": {
+                      "left_operand": "$activity.definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf.output.succeeded$",
+                      "operator": "eq",
+                      "right_operand": true
+                    }
+                  },
+                  "operator": "and",
+                  "right_operand": {
+                    "left_operand": "$activity.definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  }
+                },
+                "operator": "and",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": true
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01JL2RDA5FP5226izBYyTWytSZOsC0LdLkb",
+                "name": "Set Variables",
+                "title": "PASS",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "PASS",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh.output.variable_workflow_01JL2RA0MB4ZZ72XrjQDrZf2WviP1a75IPQ$",
+                      "variable_value_new": "✔✅All Python 3 Actions Passed - 100%"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01JL2RDL5VIWQ1dt83KXE3qkNFAoodPZLRZ",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": {
+                    "left_operand": {
+                      "left_operand": {
+                        "left_operand": {
+                          "left_operand": "$activity.definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P.output.succeeded$",
+                          "operator": "ne",
+                          "right_operand": true
+                        },
+                        "operator": "or",
+                        "right_operand": {
+                          "left_operand": "$activity.definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl.output.succeeded$",
+                          "operator": "ne",
+                          "right_operand": true
+                        }
+                      },
+                      "operator": "or",
+                      "right_operand": {
+                        "left_operand": "$activity.definition_activity_01JL2RBS51JEH08tPBfLajwhYmnS42WRNGe.output.succeeded$",
+                        "operator": "ne",
+                        "right_operand": true
+                      }
+                    },
+                    "operator": "or",
+                    "right_operand": {
+                      "left_operand": "$activity.definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf.output.succeeded$",
+                      "operator": "ne",
+                      "right_operand": true
+                    }
+                  },
+                  "operator": "or",
+                  "right_operand": {
+                    "left_operand": "$activity.definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN.output.succeeded$",
+                    "operator": "ne",
+                    "right_operand": true
+                  }
+                },
+                "operator": "or",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo.output.succeeded$",
+                  "operator": "ne",
+                  "right_operand": true
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01JL2RDSLYWC57ixTBTlJtl0iwbUTnvoZ3n",
+                "name": "Set Variables",
+                "title": "FAIL",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "FAIL",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh.output.variable_workflow_01JL2RA0MB4ZZ72XrjQDrZf2WviP1a75IPQ$",
+                      "variable_value_new": "❌🔴Python Actions got Failed\nPlease check the Instnace : $workflow.definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh.output.instance_id$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01JL2RE1E39C54z7V6ZIfWw7vldVKOO8dbe",
+        "name": "Set Variables",
+        "title": "Set Variables Table Email",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables Table Email",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh.output.variable_workflow_01JL2RA0MB8HD60VdlcyssfoQwQ94v028IN$",
+              "variable_value_new": "\u003ch2\u003ePython3 Adapter\u003c/h2\u003e\n\n\u003ctable\u003e\n\u003ctr\u003e\n\u003cth\u003eActivity Name\u003c/th\u003e\n\u003cth\u003eTrue/False\u003c/th\u003e\n\u003cth\u003eStatus Code\u003c/th\u003e\n\u003cth\u003eError Message\u003c/th\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eBasic Python Test\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RB9QPJ1E0xT0x0OPKLB8aD9R2wsg4P.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eSleep 5 seconds with Script\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBK1OINR43g5QhRGVeHFH9oEV9cDsl.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eGetting current date using script\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBS51JEH08tPBfLajwhYmnS42WRNGe.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBS51JEH08tPBfLajwhYmnS42WRNGe.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RBS51JEH08tPBfLajwhYmnS42WRNGe.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eCurrent date In different Formats\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RC5B8PYZ3qnPNDkHLmajWz4icxXxSf.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eMaking HTTP call\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCC7SO8I1q3zum3kOupHVLr65UPuWN.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eGetting HTTP  Responce\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo.output.succeeded$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo.output.error.code$\u003c/td\u003e\n\u003ctd\u003e$activity.definition_activity_01JL2RCJP36842gjdPqwCswjnUIxpSb4yHo.output.error.message$\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\n$workflow.definition_workflow_01JL2RA10QTOO6NSiGw6LNvLL2NvdCW3knh.output.variable_workflow_01JL2RA0MB4ZZ72XrjQDrZf2WviP1a75IPQ$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  }
+}
