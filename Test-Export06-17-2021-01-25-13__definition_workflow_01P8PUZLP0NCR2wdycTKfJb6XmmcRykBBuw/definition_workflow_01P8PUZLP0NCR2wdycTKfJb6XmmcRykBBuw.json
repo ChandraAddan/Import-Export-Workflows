@@ -39,5 +39,20 @@
     "categories": [
       "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
     ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
   }
 }
