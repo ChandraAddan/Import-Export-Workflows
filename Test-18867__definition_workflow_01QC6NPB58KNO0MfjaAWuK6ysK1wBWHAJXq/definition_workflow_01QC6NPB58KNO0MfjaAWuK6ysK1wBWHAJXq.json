@@ -1,0 +1,93 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01QC6NPB58KNO0MfjaAWuK6ysK1wBWHAJXq",
+    "name": "CA 8/2 Schedule",
+    "title": "CA 8/2 Schedule",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA 8/2 Schedule",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01QC6NWHB4KKS2VJ9r2pqgEQR1nqrqHdGds",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "cisco"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerschedule_01QC6O4LS5VJH1SxPwcC2d9UrsNU3jHOJp9": {
+      "workflow_id": "definition_workflow_01QC6NPB58KNO0MfjaAWuK6ysK1wBWHAJXq",
+      "name": "CA Trigger",
+      "title": "",
+      "lowercase_name": "schedule.ca_trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01QC6NNRS7JNY4mKgkFt05MqGgYYuUb9E8m",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01QC6O4LS5VJH1SxPwcC2d9UrsNU3jHOJp9",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01QC6NNRS7JNY4mKgkFt05MqGgYYuUb9E8m": {
+      "unique_name": "schedule_01QC6NNRS7JNY4mKgkFt05MqGgYYuUb9E8m",
+      "name": "CA 8/2",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "America/Chicago",
+        "starttime": "10:50",
+        "interval_hours": 0,
+        "interval_minutes": 1,
+        "number_of_times": 2,
+        "display_name": "CA 8/2",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  }
+}
