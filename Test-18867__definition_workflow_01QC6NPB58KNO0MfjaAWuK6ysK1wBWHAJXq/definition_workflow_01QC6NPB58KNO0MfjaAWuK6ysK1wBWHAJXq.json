@@ -16,7 +16,14 @@
         "target_default": true
       },
       "target": {
-        "no_target": true
+        "execute_on_target_group": true,
+        "target_group": {
+          "target_group_id": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+          "run_on_all_targets": true,
+          "selected_target_types": [
+            "web-service.endpoint"
+          ]
+        }
       }
     },
     "object_type": "definition_workflow",
@@ -75,6 +82,39 @@
       "object_type": "schedule"
     }
   },
+  "targets": {
+    "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa": {
+      "unique_name": "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+      "name": "GOOGLE",
+      "title": "GOOGLE",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "GOOGLE",
+        "host": "www.google.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt": {
+      "unique_name": "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt",
+      "name": "YAHOO",
+      "title": "YAHOO",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "YAHOO",
+        "host": "www.yahoo.com",
+        "ignore_proxy": false,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  },
   "runtime_users": {
     "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
       "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
@@ -88,6 +128,29 @@
         "password": "*****",
         "username": "*****"
       }
+    }
+  },
+  "target_groups": {
+    "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL": {
+      "unique_name": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+      "name": "GOOGLE YAHOO",
+      "title": "GOOGLE YAHOO",
+      "description": "Added 2nd target to the Target Group",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "web-service.endpoint",
+          "view_target_type": "web-service.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+            "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt"
+          ]
+        }
+      ],
+      "object_type": "target_group"
     }
   }
 }
