@@ -1,0 +1,252 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01QEU4WWC0S4E0tpo8BNIa376jT0IBWAwKR",
+    "name": "Test Tables",
+    "title": "Test Tables",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "tabletype_01QEUD1V7PI7T5lIsW74iVohXfP05jRx6Bg",
+        "properties": {
+          "scope": "local",
+          "name": "CA Local Table",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QEUD7EP2ZSE7grFNLHPm1WQDTOSc6wLMf",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Test Tables",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01QI8TRPNKSJB4coVuHSYAlmMmWXVslb7g9",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01QI8TRY9YKG03hyfuzvCg6JsEHTONRZUBD",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01QEUDLNJUHVA4nNLcFYUHb8WU6LscbOg55",
+                "name": "Add Row to Table",
+                "title": "Add Row to Table",
+                "type": "core.addrowtotable",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Add Row to Table",
+                  "input_table": "$workflow.definition_workflow_01QEU4WWC0S4E0tpo8BNIa376jT0IBWAwKR.local.variable_workflow_01QEUD7EP2ZSE7grFNLHPm1WQDTOSc6wLMf$",
+                  "row": [
+                    {
+                      "key": "Name",
+                      "type": "string",
+                      "value": "abc"
+                    },
+                    {
+                      "key": "Id",
+                      "type": "string",
+                      "value": "1"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01QI8TS5SIR5G0mVJLBTQXURxIWaqQKIVF8",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01QEUCDOHYNTL0tuNuEPa00eWrOQafB99Zs",
+                "name": "To Upper",
+                "title": "To Upper",
+                "type": "core.string2upper",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "To Upper",
+                  "skip_execution": false,
+                  "source": "cisco"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01QEUCJGY94TD6aTxLVS8JwQ0kBNjplLz6m",
+        "name": "Group",
+        "title": "Group",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Group",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01QEUDCOUUULS1NFMFwtu1ASAepEZydbohk",
+            "name": "Update Row in Table",
+            "title": "Update Row in Table",
+            "type": "core.updaterowintable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "columns": [
+                {
+                  "column_name": "Name",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "Id",
+                  "column_type": "string"
+                }
+              ],
+              "continue_on_failure": false,
+              "display_name": "Update Row in Table",
+              "input_table": "$workflow.definition_workflow_01QEU4WWC0S4E0tpo8BNIa376jT0IBWAwKR.local.variable_workflow_01QEUD7EP2ZSE7grFNLHPm1WQDTOSc6wLMf$",
+              "row": [
+                {
+                  "key": "Name",
+                  "type": "string",
+                  "value": "cisco"
+                },
+                {
+                  "key": "Id",
+                  "type": "string",
+                  "value": "123"
+                }
+              ],
+              "rows": {
+                "rows_matching_criteria": true,
+                "where_clause": "Id == \"1\""
+              },
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01QEUKHC5DMUR5W83SVDm0dvZ1sCKKuAMst",
+            "name": "Select from Table",
+            "title": "Select from Table",
+            "type": "core.selectfromtable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "columns": [
+                {
+                  "column_name": "Name",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "Id",
+                  "column_type": "string"
+                }
+              ],
+              "continue_on_failure": false,
+              "display_name": "Select from Table",
+              "input_table": "$workflow.definition_workflow_01QEU4WWC0S4E0tpo8BNIa376jT0IBWAwKR.local.variable_workflow_01QEUD7EP2ZSE7grFNLHPm1WQDTOSc6wLMf$",
+              "number_of_rows": {
+                "all_rows": true
+              },
+              "persist_output": true,
+              "skip_execution": false,
+              "sorting": {
+                "no_sort": true
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  },
+  "table_types": {
+    "tabletype_01QEUD1V7PI7T5lIsW74iVohXfP05jRx6Bg": {
+      "unique_name": "tabletype_01QEUD1V7PI7T5lIsW74iVohXfP05jRx6Bg",
+      "data_type": "datatype.tabletype",
+      "display_name": "CA Test Table Type",
+      "columns": [
+        {
+          "name": "Id",
+          "title": "Id",
+          "type": "string"
+        },
+        {
+          "name": "Name",
+          "title": "Name",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
