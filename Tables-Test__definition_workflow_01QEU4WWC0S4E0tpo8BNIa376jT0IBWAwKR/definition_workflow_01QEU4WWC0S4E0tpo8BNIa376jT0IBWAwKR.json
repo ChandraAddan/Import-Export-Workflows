@@ -7,6 +7,19 @@
     "base_type": "workflow",
     "variables": [
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "cisco",
+          "scope": "local",
+          "name": "Local Sec String",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QI8Z87BDW4N7fvW1vrsS7k5yl934bOLBL",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_01QEUD1V7PI7T5lIsW74iVohXfP05jRx6Bg",
         "properties": {
           "scope": "local",
