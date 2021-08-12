@@ -73,6 +73,24 @@
           "task_type": "task.approval"
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01QKW223KK6SK4UypBGNCQ46heaGlnsYDuS",
+        "name": "Test Upper",
+        "title": "Test Upper",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Test Upper",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_01QJXFDKPWT1M4kaUHyMxdaMPpfXgE22NIj"
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
@@ -278,5 +296,50 @@
       ],
       "object_type": "target_group"
     }
-  }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_01QJXFDKPWT1M4kaUHyMxdaMPpfXgE22NIj",
+        "name": "Test Upper",
+        "title": "Test Upper",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "Test Upper",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01QJXFIMWUOE859RupqvfMpuqWdUfWN4Xrf",
+            "name": "To Upper",
+            "title": "To Upper",
+            "type": "core.string2upper",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "To Upper",
+              "skip_execution": false,
+              "source": "cisco"
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
 }
