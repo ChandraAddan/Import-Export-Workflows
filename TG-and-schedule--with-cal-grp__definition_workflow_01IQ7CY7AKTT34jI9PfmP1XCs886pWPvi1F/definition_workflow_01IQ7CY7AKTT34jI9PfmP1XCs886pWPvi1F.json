@@ -123,6 +123,19 @@
       "disabled": false,
       "unique_name": "triggerschedule_01QKVPZZCGUDP1ig9jbZ8nQvcGQHLHc0xDJ",
       "object_type": "triggerschedule"
+    },
+    "triggerschedule_01QKW2K7FB0UO2KHAnDzuuDCBsNiGNos6Nb": {
+      "workflow_id": "definition_workflow_01QJXFDKPWT1M4kaUHyMxdaMPpfXgE22NIj",
+      "name": "Chidl Sch trigger",
+      "title": "",
+      "lowercase_name": "schedule.chidl_sch_trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01OKLA79LEY2U7Ei2M6EkIlwFxIJmkXQAS6",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01QKW2K7FB0UO2KHAnDzuuDCBsNiGNos6Nb",
+      "object_type": "triggerschedule"
     }
   },
   "events": {
@@ -152,6 +165,24 @@
     }
   },
   "schedules": {
+    "schedule_01OKLA79LEY2U7Ei2M6EkIlwFxIJmkXQAS6": {
+      "unique_name": "schedule_01OKLA79LEY2U7Ei2M6EkIlwFxIJmkXQAS6",
+      "name": "CA Schedule",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "America/Chicago",
+        "starttime": "11:53",
+        "interval_hours": 0,
+        "interval_minutes": 1,
+        "number_of_times": 5,
+        "display_name": "CA Schedule",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    },
     "schedule_01QKVPNSEWI8T1E2pAIkHFW6DHaPZBpZNg9": {
       "unique_name": "schedule_01QKVPNSEWI8T1E2pAIkHFW6DHaPZBpZNg9",
       "name": "Group Schedule",
