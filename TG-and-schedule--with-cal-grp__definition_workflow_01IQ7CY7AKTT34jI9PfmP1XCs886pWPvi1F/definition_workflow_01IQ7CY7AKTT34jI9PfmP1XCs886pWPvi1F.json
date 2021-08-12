@@ -1,0 +1,282 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01IQ7CY7AKTT34jI9PfmP1XCs886pWPvi1F",
+    "name": "Email Trigger",
+    "title": "Email Trigger",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Email Trigger",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": true,
+        "target_group": {
+          "target_group_id": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+          "run_on_all_targets": false,
+          "selected_target_types": [
+            "web-service.endpoint"
+          ],
+          "use_criteria": {
+            "choose_target_using_algorithm": "choose_all_with_matching_criteria",
+            "conditions": [
+              {
+                "operator": "ne",
+                "left_operand": "$targetgroup.web-service endpoint.input.display_name$",
+                "right_operand": "filter"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KMNI18MFE9D5tkggt1I0mJK6OahPEac8t",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "test"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01QKRDZCRLBCA4EVIqOaUEOPkMqJmNGA4wW",
+        "name": "Update Task",
+        "title": "Update Task",
+        "type": "task.update_task",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Update Task",
+          "run_as": "caddan@cisco.com",
+          "skip_execution": false,
+          "task_id": "$trigger.triggerevent_01QKQCFPQFTA92Cy33LgwJb2r2PhtWUjrqp.common.ref_id$",
+          "task_properties": [
+            {
+              "property_name": "priority",
+              "value": "low"
+            }
+          ],
+          "task_type": "task.approval"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerevent_01QKQCFPQFTA92Cy33LgwJb2r2PhtWUjrqp": {
+      "workflow_id": "definition_workflow_01IQ7CY7AKTT34jI9PfmP1XCs886pWPvi1F",
+      "name": "E- trigger",
+      "title": "",
+      "lowercase_name": "event.e-_trigger",
+      "type": "event",
+      "base_type": "trigger",
+      "ref_id": "event_01IN0IC91IH7X7MnesSY7th7uRSUqbaRzH7",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerevent_01QKQCFPQFTA92Cy33LgwJb2r2PhtWUjrqp",
+      "object_type": "triggerevent"
+    },
+    "triggerschedule_01QKVPZZCGUDP1ig9jbZ8nQvcGQHLHc0xDJ": {
+      "workflow_id": "definition_workflow_01IQ7CY7AKTT34jI9PfmP1XCs886pWPvi1F",
+      "name": "grp sch",
+      "title": "",
+      "lowercase_name": "schedule.grp_sch",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01QKVPNSEWI8T1E2pAIkHFW6DHaPZBpZNg9",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01QKVPZZCGUDP1ig9jbZ8nQvcGQHLHc0xDJ",
+      "object_type": "triggerschedule"
+    }
+  },
+  "events": {
+    "event_01IN0IC91IH7X7MnesSY7th7uRSUqbaRzH7": {
+      "name": "Email Event",
+      "title": "Email Event",
+      "type": "email.event",
+      "base_type": "event",
+      "object_type": "event",
+      "target_id": "definition_target_01IN0IBFT1GVD6Pi9CyDUiC6rtkGnybyCC0",
+      "webhook_id": "",
+      "version": "1.0.0",
+      "properties": {
+        "action": "read",
+        "conditions": {
+          "left_operand": "$output.subject$",
+          "operator": "eqi",
+          "right_operand": "Test multiple_5555_Tenant"
+        },
+        "display_name": "Email Event",
+        "download_attachments": true,
+        "folder": "INBOX",
+        "target_id": "definition_target_01IN0IBFT1GVD6Pi9CyDUiC6rtkGnybyCC0",
+        "title": "Email Event"
+      },
+      "unique_name": "event_01IN0IC91IH7X7MnesSY7th7uRSUqbaRzH7"
+    }
+  },
+  "schedules": {
+    "schedule_01QKVPNSEWI8T1E2pAIkHFW6DHaPZBpZNg9": {
+      "unique_name": "schedule_01QKVPNSEWI8T1E2pAIkHFW6DHaPZBpZNg9",
+      "name": "Group Schedule",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_group_01QKVP2CQON7G17faH7Wkqd7zCHNLeZT2Yg",
+        "timezone": "Etc/GMT+0",
+        "starttime": "16:25",
+        "interval_hours": 0,
+        "interval_minutes": 0,
+        "number_of_times": 1,
+        "display_name": "Group Schedule",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "calendars": {
+    "calendar_group_01QKVP2CQON7G17faH7Wkqd7zCHNLeZT2Yg": {
+      "unique_name": "calendar_group_01QKVP2CQON7G17faH7Wkqd7zCHNLeZT2Yg",
+      "name": "CA Group Cal",
+      "title": "CA Group Cal",
+      "base_type": "calendar",
+      "type": "calendar.group",
+      "properties": {
+        "calendar_exclude": [
+          "calendar_recurring_1BMfMkExf4yIRuj23K0kmAAPc6T"
+        ],
+        "calendar_include": [
+          "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ"
+        ],
+        "date_range": {
+          "end_date": "2035-01-12",
+          "start_date": "2021-08-12"
+        }
+      },
+      "version": "1.0.0",
+      "object_type": "calendar_group"
+    }
+  },
+  "targets": {
+    "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa": {
+      "unique_name": "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+      "name": "GOOGLE",
+      "title": "GOOGLE",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "GOOGLE",
+        "host": "www.google.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt": {
+      "unique_name": "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt",
+      "name": "YAHOO",
+      "title": "YAHOO",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "YAHOO",
+        "host": "www.yahoo.com",
+        "ignore_proxy": false,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01IN0IBFT1GVD6Pi9CyDUiC6rtkGnybyCC0": {
+      "unique_name": "definition_target_01IN0IBFT1GVD6Pi9CyDUiC6rtkGnybyCC0",
+      "name": "CA IMAP",
+      "title": "CA IMAP",
+      "type": "email.imap_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01IN0E0V8IWMV3J7zmGGmbZXiDjx9lZGgWe",
+        "display_name": "CA IMAP",
+        "ignore_certificate_errors": true,
+        "polling_interval": 10,
+        "port": 993,
+        "protocol": "IMAP",
+        "server": "imap.gmail.com",
+        "tls_enabled": true
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01IN0E0V8IWMV3J7zmGGmbZXiDjx9lZGgWe": {
+      "unique_name": "definition_runtime_user_01IN0E0V8IWMV3J7zmGGmbZXiDjx9lZGgWe",
+      "name": "CA GMAIL",
+      "title": "CA GMAIL",
+      "type": "runtime_user.email_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "description": "fgyhjk f",
+        "display_name": "CA GMAIL",
+        "password": "*****",
+        "sender": "*****"
+      }
+    },
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  },
+  "target_groups": {
+    "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL": {
+      "unique_name": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+      "name": "GOOGLE YAHOO",
+      "title": "GOOGLE YAHOO",
+      "description": "Added 2nd target to the Target Group",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "web-service.endpoint",
+          "view_target_type": "web-service.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+            "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt"
+          ]
+        }
+      ],
+      "object_type": "target_group"
+    }
+  }
+}
