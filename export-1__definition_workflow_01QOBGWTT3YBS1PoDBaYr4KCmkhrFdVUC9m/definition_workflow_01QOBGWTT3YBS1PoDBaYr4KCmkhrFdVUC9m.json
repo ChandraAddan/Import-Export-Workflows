@@ -1,0 +1,102 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01QOBGWTT3YBS1PoDBaYr4KCmkhrFdVUC9m",
+    "name": "CA",
+    "title": "CA",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "nt",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QOC25WYPB8W6U6NII3J6nexifHfYZFBh1",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA",
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01QOX5VZ7WDTI6ghuX8LXcEiwmiRJfnCjYw",
+        "name": "Create Approval Request",
+        "title": "Create Approval Request",
+        "type": "task.approval_request",
+        "base_type": "activity",
+        "properties": {
+          "approval_choices": [
+            "Approve",
+            "Reject"
+          ],
+          "continue_on_failure": false,
+          "display_name": "Create Approval Request",
+          "due_date": {
+            "is_relative_time": true,
+            "relative_time": {
+              "duration": 15,
+              "time_units": "days"
+            },
+            "set_due_date": true
+          },
+          "expiration_date": {
+            "is_relative_time": true,
+            "relative_time": {
+              "duration": 15,
+              "time_units": "days"
+            }
+          },
+          "expiration_status": "Expired",
+          "minimum_approvals": 1,
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01QOX6AYBD1PC1078JhxCkD5OlqCJZK16f5",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU": {
+      "unique_name": "definition_runtime_user_01JKS0DL8C1GM3b01l3dqSOW5Jlrzm7tDWU",
+      "name": "CA GIT KEY",
+      "title": "CA GIT KEY",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA GIT KEY",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  }
+}
