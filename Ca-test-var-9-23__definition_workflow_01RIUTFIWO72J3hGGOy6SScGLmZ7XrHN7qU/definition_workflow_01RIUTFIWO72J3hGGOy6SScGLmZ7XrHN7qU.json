@@ -1,0 +1,68 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01RIUTFIWO72J3hGGOy6SScGLmZ7XrHN7qU",
+    "name": "CA Test Var ",
+    "title": "CA Test Var ",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.date",
+        "properties": {
+          "value": "0001-01-01T00:00:00+00:00",
+          "scope": "input",
+          "name": "cac",
+          "type": "datatype.date",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01RIWAIUG7X401NyiS29SxkDteNvgzfRl7A",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA Test Var ",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01RIUTL5AW2991W3hQyD5V8lgyzq8vqnuHl",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "$workflow.definition_workflow_01RIUTFIWO72J3hGGOy6SScGLmZ7XrHN7qU.input.variable_workflow_01RIWAIUG7X401NyiS29SxkDteNvgzfRl7A$"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01RIUUSV6D19M3pCmhdJYZPHX2YboKwQNBK"
+    ]
+  },
+  "categories": {
+    "category_01RIUUSV6D19M3pCmhdJYZPHX2YboKwQNBK": {
+      "unique_name": "category_01RIUUSV6D19M3pCmhdJYZPHX2YboKwQNBK",
+      "name": "ca33",
+      "title": "ca33",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
