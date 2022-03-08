@@ -76,12 +76,15 @@
         "type": "workflow.sub_workflow",
         "base_type": "subworkflow",
         "properties": {
+          "continue_on_failure": false,
           "display_name": "Child 1",
           "runtime_user": {
             "target_default": true
           },
+          "skip_execution": false,
           "target": {
-            "no_target": true
+            "target_type": "",
+            "use_workflow_target": true
           },
           "workflow_id": "definition_workflow_01A19H739JCTY4eQ99qxgZ97lJ9qRo7RX9M",
           "workflow_name": ""
