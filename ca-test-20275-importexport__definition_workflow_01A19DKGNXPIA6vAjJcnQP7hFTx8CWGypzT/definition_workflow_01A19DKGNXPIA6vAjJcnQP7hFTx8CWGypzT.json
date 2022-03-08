@@ -1,0 +1,102 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01A19DKGNXPIA6vAjJcnQP7hFTx8CWGypzT",
+    "name": "Parent 1",
+    "title": "Parent 1",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Parent 1",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01A19H2CBHTXT2zhgV5qH2FZZ3fyUSJ1974",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "verison 1"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01A19JVXHSDHC0QOK8BwdkYwZFu8po8QzK5",
+        "name": "Convert Json to Xml",
+        "title": "Convert Json to Xml",
+        "type": "core.json2xml",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "updated",
+          "display_name": "Convert Json to Xml",
+          "input_json": "{\"name\":\"cisco\"}",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01A19OYYH5UM54uThMnNt4odS0JLqiVgZue",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "skip_execution": false,
+          "sleep_interval": 1
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01A19HQV8YYPP6DTzm2TiEoU2KWKOQWiBAk",
+        "name": "Child 1",
+        "title": "Child 1",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Child 1",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_01A19H739JCTY4eQ99qxgZ97lJ9qRo7RX9M",
+          "workflow_name": ""
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "atomic_workflows": [
+    ""
+  ],
+  "dependent_workflows": [
+    "definition_workflow_01A19H739JCTY4eQ99qxgZ97lJ9qRo7RX9M"
+  ]
+}
